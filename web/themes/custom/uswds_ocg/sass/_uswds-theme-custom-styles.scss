@@ -1,0 +1,92 @@
+/*
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+========================================
+========================================
+========================================
+----------------------------------------
+USWDS THEME CUSTOM STYLES
+----------------------------------------
+!! Copy this file to your project's
+   sass root. Don't edit the version
+   in node_modules.
+----------------------------------------
+Custom project SASS goes here.
+
+i.e.
+@include u-padding-right('05');
+----------------------------------------
+*/
+
+h1, h2 {
+  @include u-text('base-dark');
+  font-weight: normal;
+}
+
+body {
+  background-image: url(/themes/custom/uswds_ocg/assets/img/bkg-tile.png);
+}
+
+/* Header */
+
+.usa-logo .logo-img img {
+  max-width: none;
+}
+
+.dna-banner {
+  background-image: url(/themes/custom/uswds_ocg/assets/img/dna-sequence.png);
+  background-repeat: repeat-x;
+  height: 1.25em;
+  width: 100%;
+}
+
+.usa-header--extended .usa-nav {
+  @include u-bg('base-lighter');
+}
+
+.usa-nav__primary-item {
+  text-transform: uppercase;
+}
+
+/* Homepage */
+
+.view-homepage .view-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.view-homepage .views-row {
+    position: relative;
+    width: 50%;
+    flex: 0 0 66.66%;
+    padding-right: 5%;
+}
+
+.view-homepage .views-field-field-email-update-link {
+    position: absolute;
+    bottom: 0;
+}
+
+.view-homepage .views-field-field-email-update-link img, .view-homepage .views-field-field-twitter-link img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.view-homepage .views-field-field-twitter-link {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+}
+
+.view-homepage .views-field-field-ocg-mission-image, .view-homepage .views-field-field-data-access-image {
+    flex: 0 0 33.33%;
+}
+
+.view-homepage .views-field-field-learn-more-link {
+    @include u-bg('base-lighter');
+    float: left;
+    padding: 1%;
+}
