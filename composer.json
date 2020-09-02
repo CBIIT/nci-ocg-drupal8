@@ -29,21 +29,32 @@
         "drupal/conditional_fields": "^1.0@alpha",
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
-        "drupal/draggableviews": "^2.0",
+        "drupal/draggableviews": "2.0.x-dev",
+        "drupal/drupalmoduleupgrader": "1.x-dev",
         "drupal/entity_reference_revisions": "^1.8",
         "drupal/faq": "^1.0@alpha",
         "drupal/field_group": "^3.1",
+        "drupal/file_management": "^1.0@alpha",
         "drupal/fontyourface": "^3.3",
+        "drupal/lb_everywhere": "^1.0@alpha",
         "drupal/ldap": "^3.0@beta",
         "drupal/libraries": "^3.0@alpha",
         "drupal/linkchecker": "1.x-dev",
         "drupal/memcache": "^2.1",
-        "drupal/paragraphs": "^1.12",
-        "drupal/rules": "^3.0@alpha",
+        "drupal/menu_block": "^1.6",
+        "drupal/migrate_file_to_media": "2.0",
+        "drupal/migrate_plus": "5.x-dev",
+        "drupal/migrate_tools": "5.x-dev",
+        "drupal/paragraphs": "1.x-dev",
+        "drupal/rules": "3.x-dev",
         "drupal/uswds": "2.x-dev",
         "drupal/uswds_paragraphs": "^1.0@beta",
         "drupal/viewfield": "^3.0@beta",
-        "drush/drush": "^9.0.0",
+        "drupal/views_conditional": "^1.0",
+        "drupal/views_field_view": "^1.0@beta",
+        "drupal/views_selective_filters": "1.x-dev",
+        "drupal/views_slideshow": "^4.7",
+        "drush/drush": "dev-master",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
@@ -97,6 +108,11 @@
             "initial": {
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
+            }
+        },
+        "patches": {
+            "drupal/views_selective_filters": {
+                "Drupal Views Selective Filters fix missing column issue": "https://www.drupal.org/files/issues/2020-07-13/views_selective_filters-sql_error-2804485-9-8.patch"     
             }
         }
     }
