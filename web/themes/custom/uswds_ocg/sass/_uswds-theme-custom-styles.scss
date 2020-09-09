@@ -49,7 +49,10 @@ body {
 
 .rtecenter {text-align:center;}
 
-a {text-decoration: none;}
+a {
+  text-decoration: none;
+  font-weight: 600;
+}
 
 a:hover {text-decoration: underline;}
 
@@ -96,6 +99,11 @@ aside {
 
 .usa-nav__primary-item {
   text-transform: uppercase;
+  a {
+    h3 {
+      color: #fff;
+    }
+  }
 }
 
 #block-utilitymenu {
@@ -653,6 +661,46 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
   margin-bottom: 20%;
 }
 
+.block-views-blockyoutube-videos-block-1 {
+  background: #f5c900;
+  background: linear-gradient(to bottom, #f5c900 0%, #fef6d5 80%, #faf4bf 100%) repeat scroll 0% 0% transparent;
+  padding: 15px;
+  margin-bottom: 20%;
+  h2 {
+    color: #774928;
+    font-size: 15.6px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+  ul {
+    margin: 0;
+    list-style-type: none;
+    list-style-image: url(/themes/custom/uswds_ocg/assets/img/play-button.png);
+  }
+  li {
+    padding-bottom: 5px;
+    a {
+      color: #323232;
+    }
+  }
+  .views-field-field-youtube-videos-media {
+    display: none;
+  }
+}
+
+.block-views-blockyoutube-videos-block-1:before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-width: 23px 23px 0px 0px;
+    border-style: solid;
+    border-color: transparent #FFF;
+    display: block;
+    width: 0px;
+}
+
 /* Programs */
 
 .block-views-blockprograms-block-3 {
@@ -857,5 +905,13 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
       padding-bottom: 25px;
       margin-bottom: 0 !important;
     }
+  }
+}
+
+/* Tutorials */
+
+.block-views-blockprogram-tutorials-block-1 {
+  .views-row {
+    padding-bottom: 3%;
   }
 }
