@@ -26,10 +26,11 @@
         "drupal/better_exposed_filters": "^5.0@beta",
         "drupal/block_class": "^1.2",
         "drupal/captcha": "^1.1",
+        "drupal/colorbox": "^1.6",
+        "drupal/colorbox_inline": "^1.2",
         "drupal/conditional_fields": "^1.0@alpha",
-        "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
-        "drupal/draggableviews": "2.0.x-dev",
+        "drupal/draggableviews": "1.x-dev",
         "drupal/drupalmoduleupgrader": "1.x-dev",
         "drupal/entity_reference_revisions": "^1.8",
         "drupal/faq": "^1.0@alpha",
@@ -113,6 +114,9 @@
         "patches": {
             "drupal/views_selective_filters": {
                 "Drupal Views Selective Filters fix missing column issue": "https://www.drupal.org/files/issues/2020-07-13/views_selective_filters-sql_error-2804485-9-8.patch"     
+            },
+            "drupal/draggableviews" : {
+              "Draggableviews patch to add attached view selection": "https://www.drupal.org/files/issues/2020-04-24/draggableviews-sort_handler_specify_order_view-2767437-70.patch"
             }
         }
     }
