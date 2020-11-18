@@ -1,0 +1,7 @@
+hello.content:
+  path: '/ocg_migrate_files'
+  defaults:
+    _controller: '\Drupal\ocg_migrate_files\Controller\OcgMigrateFilesController::content'
+    _title: 'OCG Migrate Files'
+  requirements:
+    _permission: 'access content'

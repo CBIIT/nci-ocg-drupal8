@@ -1,0 +1,6 @@
+name: OCG Migrate Files
+description: Migrates files to media entities
+package: OCG
+type: module
+version: 1.0
+core: 8.x

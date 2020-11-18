@@ -1,0 +1,9 @@
+angularjs:
+  version: 1.34
+  js:
+    /libraries/angularjs/angular.min.js: {}
+    
+ocg_json:
+  version: 1.0
+  js:
+    js/ocg_json.gen.js: {}

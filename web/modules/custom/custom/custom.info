@@ -1,0 +1,4 @@
+name = Custom module
+description = Custom functionality for this site
+core = 7.x
+scripts[] = custom.js

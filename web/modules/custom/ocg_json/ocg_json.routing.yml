@@ -1,0 +1,15 @@
+ocg_json.content:
+  path: '/programs/ctd2/data-portal'
+  defaults:
+    _controller: '\Drupal\ocg_json\Controller\OcgJsonController::content'
+    _title: 'CTD² Data Portal'
+  requirements:
+    _permission: 'access content'
+    
+ocg_json.data:
+  path: '/ctd2-json'
+  defaults:
+    _controller: '\Drupal\ocg_json\Controller\Ctd2JsonController::data'
+    _title: 'CTD² Data Portal'
+  requirements:
+    _permission: 'access content'
