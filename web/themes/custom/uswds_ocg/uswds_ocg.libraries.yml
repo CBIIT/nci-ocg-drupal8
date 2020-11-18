@@ -1,0 +1,9 @@
+target_methods:
+  version: 1.0.0
+  js:
+    assets/js/target_methods.js: {}
+
+uswds_ocg:
+  version: 1.0.0
+  js:
+    assets/js/uswds_ocg.js: {}

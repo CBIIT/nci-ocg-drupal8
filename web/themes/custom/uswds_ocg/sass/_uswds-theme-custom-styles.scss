@@ -35,6 +35,10 @@ h1, h2, h3, h4 {
   font-weight: normal;
 }
 
+h4 {
+  font-size: 1.2em;
+}
+
 body {
   background-image: url(/themes/custom/uswds_ocg/assets/img/bkg-tile.png);
 }
@@ -49,9 +53,15 @@ body {
 
 .rtecenter {text-align:center;}
 
+.left {
+  float: left;
+  padding-right: 20px;
+  position: relative;
+}
+
 a {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 a:hover {text-decoration: underline;}
@@ -65,11 +75,34 @@ a:hover {text-decoration: underline;}
 }
 
 aside {
-  padding-top: 1.7rem;
+  padding-top: 0;
 }
 
 .usa-form {
-    max-width: 100%;
+  max-width: 100%;
+}
+
+#block-uswds-ocg-mainpagecontent ul {
+  list-style-type: none;
+  list-style-image: url(/themes/custom/uswds_ocg/assets/img/bullet.gif);
+}
+
+.rteleft {
+  text-align: left;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.layout--twocol-section--75-25 .layout__region--first {
+  padding-right: 3%;
+}
+
+.newtab {
+  display: none;
 }
 
 /* Header */
@@ -110,7 +143,7 @@ aside {
   position: absolute;
   right: 0;
   margin-top: 2.5rem;
-  
+
   ul {
     text-transform: uppercase;
     font-size: 14px;
@@ -124,6 +157,7 @@ aside {
     a {
       text-decoration: none;
       font-weight: 600;
+      color: color("orange-60");
     }
   }
   li:last-of-type {
@@ -149,7 +183,7 @@ aside {
     border: 0.063em solid #CFCFCF;
     box-shadow: 0 0.063em 0.188em #404040 inset;
     height: 1.5rem;
-    width: auto;
+    width: auto
   }
   input[type="submit"] {
     background: none repeat scroll 0% 0% transparent;
@@ -192,6 +226,32 @@ aside {
   padding-right: 25px;
 }
 
+/* Navigation */
+
+.region-primary-menu {
+  #basic-mega-nav-section-1 {
+    .grid-gap-4 {
+      .usa-nav__submenu-list {
+        padding-left: 10%;
+      }
+    }
+  }
+}
+
+.region-primary-menu {
+  ul {
+    li {
+      button[aria-controls="basic-mega-nav-section-4"] {
+        color: #fff2cc;
+        background-color: #900;
+        span:hover {
+          color: #fff2cc;
+        }
+      }
+    }
+  }
+}
+
 /* Footer */
 
 .usa-footer__primary-section {
@@ -229,10 +289,32 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
   display: flex;
   justify-content: center;
   color: #fff;
+  p {
+    margin-bottom: 0.25em;
+    margin-top: 0.25em;
+  }
 }
 
 #block-nihlinks a, #block-nihlinks a:visited, #block-nihlinks a:hover {
   color: #fff;
+}
+
+/* Last Updated */
+
+.view-last-updated,
+.view-display-id-last_updated {
+  font-size: 12px;
+  padding-top: 3%;
+}
+
+.view-display-id-last_updated {
+  .view-content {
+    .views-row {
+      border: none !important;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+  }
 }
 
 /* Homepage */
@@ -263,7 +345,13 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
 }
 
 .view-homepage .views-row {
-  
+
+}
+
+.view-id-homepage.view-display-id-block_3 {
+  .views-row {
+    position: relative;
+  }
 }
 
 .view-homepage .views-field-field-ocg-mission-body{
@@ -293,6 +381,10 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
   @include u-bg('base-lighter');
   padding: 1%;
   float: left;
+  a {
+    color: color("orange-60");
+  }
+
 }
 
 .view-programs table {
@@ -316,7 +408,7 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
 }
 
 .view-programs .views-field-field-image img {
-  
+
   -webkit-box-shadow: 10px 10px 5px 0px color('gray-cool-50');
   -moz-box-shadow: 10px 10px 5px 0px color('gray-cool-50');
   box-shadow: 10px 10px 5px 0px color('gray-cool-50');
@@ -373,6 +465,11 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
       }
     }
   }
+}
+
+.view-id-e_newsletter.view-display-id-homepage_newsletter,
+.view-id-publications.view-display-id-homepage_news_publications {
+  position: relative;
 }
 
 .block-views-blockpublications-homepage-news-publications h2,
@@ -457,6 +554,7 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
       a {
         color: #4B4B4B;
         font-size: 16.5px;
+        padding: .25rem 1rem;
       }
       a.usa-current {
         color: #900;
@@ -468,14 +566,65 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
   }
 }
 
+.view-id-program_sidebar.view-display-id-block_1 {
+  .views-field-field-programs-program-logo {
+    img {
+      height: auto;
+    }
+  }
+}
+
+#block-quicklinkssidebar-2,
+#block-ncigenomicstwitterfeed,
+#block-emailsignupforrightsidebar-2 {
+  margin-bottom: 10%;
+}
+
+.path-news-publications .usa-sidenav {
+  margin-bottom: 10% !important;
+  padding-top: 0 !important;
+}
+
+#block-newspublications,
+#block-aboutocgmenutitle,
+#block-datamenutitle {
+  h2.block-title {
+    font-size: 16.5px;
+    color: #774928;
+    line-height: 16px;
+  }
+}
+
 /* Second Sidebar */
 
 #block-quicklinkssidebar,
-#block-emailsignupforrightsidebar {
-  margin-bottom: 20%;
+#block-emailsignupforrightsidebar,
+#block-emailsignupforrightsidebar-3,
+#block-hcmiresources,
+#block-pgdisidebarbanner,
+#block-pediatricresources,
+#block-targetcollaborators {
+  margin-bottom: 10%;
 }
 
-#block-quicklinkssidebar h2 {
+#block-targetcollaborators {
+  font-size: 15.6px;
+  color: color('primary');
+  padding: 9px 15px 5px;
+  border-bottom: 1px solid #FAE21D;
+  background: linear-gradient(to bottom,#faf4bf 0%,#fef6d5 30%,#faec7a 100%) repeat scroll 0% 0% transparent;
+  margin-bottom: 10%;
+  margin-top: 0;
+  font-family: 'FranklinGothicFSMedCdRegular';
+  font-style: normal;
+  a {
+    font-weight: 500 !important;
+  }
+}
+
+#block-quicklinkssidebar h2,
+#block-hcmiresources h2,
+#block-quicklinkssidebar-2 h2{
   font-size: 15.6px;
   font-weight: 500;
   color: color('primary');
@@ -487,7 +636,11 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
 }
 
 #block-quicklinkssidebar .field--name-body,
-#block-emailsignupforrightsidebar .field--name-body {
+#block-emailsignupforrightsidebar .field--name-body,
+#block-hcmiresources .field--name-body,
+#block-quicklinkssidebar-2 .field--name-body,
+#block-emailsignupforrightsidebar-2 .field--name-body,
+#block-emailsignupforrightsidebar-3 .field--name-body {
   width: 100%;
   min-height: 55px;
   margin-bottom: 30px;
@@ -500,31 +653,41 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
 }
 
 #block-quicklinkssidebar .field--name-body:before,
-#block-emailsignupforrightsidebar .field--name-body:before {
+#block-emailsignupforrightsidebar .field--name-body:before,
+#block-hcmiresources .field--name-body:before,
+#block-quicklinkssidebar-2 .field--name-body:before,
+#block-emailsignupforrightsidebar-2 .field--name-body:before,
+#block-emailsignupforrightsidebar-3 .field--name-body:before {
   content: "";
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    border-width: 23px 23px 0px 0px;
-    border-style: solid;
-    border-color: transparent #FFF;
-    display: block;
-    width: 0px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  border-width: 23px 23px 0px 0px;
+  border-style: solid;
+  border-color: transparent #FFF;
+  display: block;
+  width: 0px;
 }
 
 #block-quicklinkssidebar p,
-#block-emailsignupforrightsidebar p {
+#block-emailsignupforrightsidebar p,
+#block-hcmiresources p,
+#block-quicklinkssidebar-2 p,
+#block-emailsignupforrightsidebar-2 p,
+#block-emailsignupforrightsidebar-3 p {
   background: none repeat scroll 0% 0% transparent;
   box-shadow: none;
   line-height: 16px;
   width: auto;
   a {
-    color: color('base-darkest');
+    color: #4B4B4B;
     text-decoration: none;
   }
 }
 
-#block-emailsignupforrightsidebar h2 { 
+#block-emailsignupforrightsidebar h2,
+#block-emailsignupforrightsidebar-2 h2,
+#block-emailsignupforrightsidebar-3 h2 { 
   color: #fff;
   border-bottom: none;
   padding: 10px 15px 5px;
@@ -612,6 +775,7 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
   }
   .views-field-field-programs-using-data {
     .field-content {
+      position: relative;
       p {
         background-color: #776349;
         color: #FFF;
@@ -642,6 +806,7 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
       font-size: 1em;
       margin: 0;
       padding: 5% 10%;
+      position: relative;
       a {
         color: #fff;
       }
@@ -658,14 +823,14 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
       width: 0px;
     }
   }
-  margin-bottom: 20%;
+  margin-bottom: 10%;
 }
 
 .block-views-blockyoutube-videos-block-1 {
   background: #f5c900;
   background: linear-gradient(to bottom, #f5c900 0%, #fef6d5 80%, #faf4bf 100%) repeat scroll 0% 0% transparent;
   padding: 15px;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
   h2 {
     color: #774928;
     font-size: 15.6px;
@@ -690,15 +855,15 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
 }
 
 .block-views-blockyoutube-videos-block-1:before {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    border-width: 23px 23px 0px 0px;
-    border-style: solid;
-    border-color: transparent #FFF;
-    display: block;
-    width: 0px;
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  border-width: 23px 23px 0px 0px;
+  border-style: solid;
+  border-color: transparent #FFF;
+  display: block;
+  width: 0px;
 }
 
 /* Programs */
@@ -850,9 +1015,21 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
   }
 }
 
+.view-id-news.view-display-id-block_1,
+.view-id-news.view-display-id-block_2,
+.view-id-news.view-display-id-block_3,
+.view-id-news.view-display-id-block_4 {
+  position: relative;
+}
+
 /* Publications */
 
-.view-id-publications.view-display-id-page_1 {
+.view-id-publications.view-display-id-page_1,
+.view-id-publications.view-display-id-page_2,
+.view-id-analytical_tools.view-display-id-page_1,
+.view-id-supported_reagents.view-display-id-page_1,
+.view-id-publications.view-display-id-page_3,
+.view-id-resources.view-display-id-page_2{
   .view-filters {
     padding-bottom: 3%;
     .views-exposed-form {
@@ -880,7 +1057,126 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
           margin-top: 0;
         }
       }
+      .views-field-title {
+        h2 {
+          margin-bottom: 0;
+        }
+      }
+      .views-field-body {
+        p {
+          margin-top: 0;
+        }
+      }
     }
+  }
+}
+
+.view-id-publications.view-display-id-page_3 {
+  .views-field-field-programs-abbreviated-title {
+    background-color: #767676;
+    width: 70px;
+    text-align: center;
+    color: #FFF !important;
+    font-weight: bold;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    font-size: 14px;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+  }
+}
+.view-id-analytical_tools.view-display-id-page_1 {
+  .view-content {
+    .views-row {
+      padding-top: 3%;
+    }
+  }
+}
+
+.view-id-analytical_tools.view-display-id-block_1,
+.view-id-analytical_tools.view-display-id-block_2,
+.view-id-analytical_tools.view-display-id-block_3,
+.view-id-supported_reagents.view-display-id-block_1 {
+  .view-content{
+    .views-row {
+      border-bottom: none;
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+.page-node-type-publication {
+  .field--name-field-publication-image-caption {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: #774928;
+    padding-bottom: 10px;
+  }
+  .field--name-field-publication-authors,
+  .publication-title,
+  .publication-link,
+  .field--name-field-publication-project
+  .view-id-program_abbreviation.view-display-id-publication {
+    padding-bottom: 10px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .field--name-field-publication-project {
+    display: flex;
+    .field__label {
+      text-transform: uppercase;
+      padding-right: 20px;
+    }
+    .field__label:after {
+      content: ":";
+    }
+    .field__item {
+      background-color: #767676;
+      width: auto;
+      text-align: center;
+      color: #fff!important;
+      font-weight: 700;
+      margin-right: 2%;
+      margin-bottom: 2%;
+      font-size: 14px;
+      padding-top: .5%;
+      padding-bottom: .5%;
+      padding-right: 10px;
+      padding-left: 10px;
+      a {
+        color: #fff;
+      }
+    }
+  }
+  .view-id-program_abbreviation.view-display-id-publication {
+    .views-field-field-programs-abbreviated-title {
+      display: flex;
+      .views-label-field-programs-abbreviated-title {
+        padding-right: 20px;
+      }
+    }
+    .field-content {
+      background-color: #767676;
+      width: 70px;
+      text-align: center;
+      color: #fff!important;
+      font-weight: 700;
+      margin-right: 2%;
+      margin-bottom: 2%;
+      font-size: 14px;
+      padding-top: .5%;
+      padding-bottom: .5%;
+    } 
+  }
+  .field--name-field-publication-date {
+    font-size: 14px;
+    line-height: 15px;
+    padding-bottom: 10px;
+  }
+  .field--name-body {
+    padding-bottom: 10px;
   }
 }
 
@@ -910,8 +1206,1187 @@ footer .usa-footer__primary-section .region-footer-menu nav ul.menu li:nth-child
 
 /* Tutorials */
 
-.block-views-blockprogram-tutorials-block-1 {
+.block-views-blockprogram-tutorials-block-1,
+.view-id-program_tutorials.view-display-id-block_2 {
   .views-row {
     padding-bottom: 3%;
   }
+}
+
+/* Accordions */
+
+.view-id-centers.view-display-id-page_1,
+.view-id-centers.view-display-id-block_1,
+.view-id-hcmi_resources.view-display-id-block_1,
+.view-id-hcmi_resources.view-display-id-block_2,
+.view-id-ocg_faq.view-display-id-page_1,
+.view-id-project_features.view-display-id-block_1,
+.view-id-using_target_data.view-display-id-page_1,
+.view-id-target_methods.view-display-id-projects {
+  .view-content {
+    .views-row {
+      .views-row {
+        .ui-state-hover,
+        .ui-state-default {
+          background: #969696;
+          background: -moz-linear-gradient(top, #969696 1%, #939393 40%, #797979 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #969696), color-stop(40%, #939393), color-stop(100%, #797979));
+          background: -webkit-linear-gradient(top, #969696 1%, #939393 40%, #797979 100%);
+          background: -o-linear-gradient(top, #969696 1%, #939393 40%, #797979 100%);
+          background: -ms-linear-gradient(top, #969696 1%, #939393 40%, #797979 100%);
+          background: linear-gradient(to bottom, #969696 1%, #939393 40%, #797979 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#969696', endColorstr='#797979',GradientType=0 );
+          -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#969696', endColorstr='#797979',GradientType=0 );
+        }
+        .ui-state-active {
+          background: #796245;
+          background: -moz-linear-gradient(top, #796245 1%, #7b664c 40%, #624f38 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #796245), color-stop(40%, #7b664c), color-stop(100%, #624f38));
+          background: -webkit-linear-gradient(top, #796245 1%, #7b664c 40%, #624f38 100%);
+          background: -o-linear-gradient(top, #796245 1%, #7b664c 40%, #624f38 100%);
+          background: -ms-linear-gradient(top, #796245 1%, #7b664c 40%, #624f38 100%);
+          background: linear-gradient(to bottom, #796245 1%, #7b664c 40%, #624f38 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#796245', endColorstr='#624f38',GradientType=0 );
+          -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#796245', endColorstr='#624f38',GradientType=0 );
+          border: 1px solid #796245/*{borderColorActive}*/;
+        }
+        .views-accordion-header {
+          .ui-icon {
+            float: left;
+            background-image: url(/core/assets/vendor/jquery.ui/themes/base/images/ui-icons_ffffff_256x240.png)/*{iconsContent}; */;
+          }
+          .field-content {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Tables */
+
+.page-node-type-flowchart,
+.page-node-type-projects,
+.page-node-type-page,
+.page-node-type-target-methods,
+.path-taxonomy,
+.field--name-body {
+  table {
+    border: 1px solid #ebebeb;
+    thead tr {
+      background-color: #900 !important;
+      color: #fff;
+      th {
+        padding: 5px 10px;
+        border-right: 1px solid #ebebeb;
+        background-color: #900 !important;
+        text-align: center;
+      }
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #fcfcea;
+      border-bottom: 1px solid #ebebeb;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #fff !important;
+      border-bottom: 1px solid #ebebeb !important;
+    }
+    td {
+      padding: 5px 10px;
+      background: none;
+      border-right: 1px solid #ebebeb;
+    }
+  }
+}
+
+/* FAQ */
+
+.view-id-ocg_faq.view-display-id-page_1 {
+  .view-content {
+    padding-bottom: 3%;
+  }
+}
+
+.view-id-ocg_faq.view-display-id-block_1 {
+  .view-content {
+    padding-bottom: 0;
+  }
+}
+
+/* TARGET Methods */
+
+.view-id-target_methods.view-display-id-description {
+  .field--name-field-full-title {
+    font-weight: bold;
+  }
+}
+
+.view-id-target_methods.view-display-id-projects_table {
+  .views-field-field-data-analysis-protocols {
+    a {
+      color: #775540 !important;
+    }
+  }
+}
+
+.page-node-type-target-methods {
+  .block-views-blockprograms-block-6 {
+    display: none;
+  }
+}
+
+.view-id-target_cgci_methods_legends {
+  .views-row {
+    margin-bottom: 10px;
+  }
+}
+
+/* News & Publications */
+
+.block-views-blocknews-news-page h2,
+.block-views-blockpublications-block-1 h2,
+.block-views-blocke-newsletter-block-1 h2 {
+  @include u-text('gray-cool-50');
+  border-bottom: solid;
+  border-image-source: linear-gradient(to right,#9e9e9e,transparent);
+  border-image-slice: 1;
+  border-width: 2px;
+}
+
+.block-views-blocknews-news-page .views-field-views-conditional-field,
+.block-views-blockpublications-block-1 .views-field-views-conditional-field-1 {
+  overflow: hidden;
+  background-color: color('gray-cool-50');
+  width: 70px;
+  line-height: auto;
+  text-align: center;
+  color: #fff !important;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 1px;
+  padding-top: 3px;
+  width: 125px;
+  text-transform: uppercase;
+}
+
+.block-views-blocknews-news-page .views-field-field-news-date {
+  margin-bottom: 20px;
+}
+
+.block-views-blocknews-news-page .more-link,
+.block-views-blockpublications-block-1 .more-link {
+  position: absolute;
+  top: -3em;
+  right: 0;
+}
+
+.block-views-blockpublications-block-1 .left {
+  float: left;
+  padding-right: 20px;
+  position: relative;
+}
+
+.block-views-blockpublications-block-1 .views-row {
+  margin-bottom: 20px;
+}
+
+.block-views-blocke-newsletter-block-1 {
+  .views-field-field-issue-date h2.field-content {
+    font-size: 15.6px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #774928;
+    padding: 9px 25px 5px;
+    border-bottom: 1px solid #fae21d;
+    border-image: none;
+    background: #faf4bf;
+    background: -moz-linear-gradient(top,#faf4bf 0%,#fef6d5 30%,#faec7a 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#faf4bf),color-stop(30%,#fef6d5),color-stop(100%,#faec7a));
+    background: -webkit-linear-gradient(top,#faf4bf 0%,#fef6d5 30%,#faec7a 100%);
+    background: -o-linear-gradient(top,#faf4bf 0%,#fef6d5 30%,#faec7a 100%);
+    background: -ms-linear-gradient(top,#faf4bf 0%,#fef6d5 30%,#faec7a 100%);
+    background: linear-gradient(to bottom,#faf4bf 0%,#fef6d5 30%,#faec7a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faf4bf',endColorstr='#faec7a',GradientType=0);
+    text-transform: uppercase;
+  }
+  .views-field-field-enews-issue-number-1,
+  .views-field-field-enews-category,
+  .views-field-views-conditional-field,
+  .views-field-title,
+  .views-field-field-enews-physician {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 3%;
+  }
+}
+
+.corner .views-row {
+  position: relative;
+  background-color: transparent;
+  background-attachment: scroll, scroll, scroll;
+  background-clip: border-box, border-box, border-box;
+  background-origin: padding-box, padding-box, padding-box;
+  background-image: linear-gradient(225deg, #f2f2f2, #f2f2f2), linear-gradient(45deg, #f2f2f2, #f2f2f2), linear-gradient(135deg, #f2f2f2 95%, transparent 10%);
+  border: medium none;
+  background-size: 55% 100%, 55% 55%, 55% 55%;
+  background-position: 0px 0px, 100% 0px, 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.corner .views-row::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background: none repeat scroll 0% 0% #FFF;
+  z-index: -1;
+}
+
+/* news */
+
+.view-id-news.view-display-id-page_1 {
+  .view-content {
+    .views-row {
+      border-bottom: 1px dotted #d7d7d7;
+      padding-bottom: 25px;
+      margin-bottom: 0 !important;
+      .views-field-views-conditional-field {
+        overflow: hidden;
+        background-color: color('gray-cool-50');
+        width: 70px;
+        line-height: auto;
+        text-align: center;
+        color: #fff !important;
+        margin-right: 10px;
+        margin-bottom: 1%;
+        padding-bottom: 1px;
+        padding-top: 3px;
+        width: 125px;
+        text-transform: uppercase;
+      }
+      .views-field-title {
+        padding-bottom: 1%;
+      }
+    }
+  }
+}
+
+/* E-Newsletters */
+
+.view-id-e_newsletter.view-display-id-page_1 {
+  .view-content {
+    .view-grouping {
+      .view-grouping-header {
+        h2 {
+          color: color('primary');
+          font-weight: bold;
+          .datetime {
+            color: color('red-70v');
+          }
+        }
+        h3 {
+          a.toggle {
+            background-image: none;
+            border: none;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 0;
+            line-height: 1em;
+            font-family: "FranklinGothicFSMedCdRegular","Arial Narrow",Arial,sans-serif;
+            font-size: 18px;
+            padding-left: 1.3em;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: #fff !important;
+            display: block;
+            font-weight: 700;
+            background: #796245;
+            background: -moz-linear-gradient(top, #796245 1%, #7b664c 40%, #624f38 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #796245), color-stop(40%, #7b664c), color-stop(100%, #624f38));
+            background: -webkit-linear-gradient(top, #796245 1%, #7b664c 40%, #624f38 100%);
+            background: -o-linear-gradient(top, #796245 1%, #7b664c 40%, #624f38 100%);
+            background: -ms-linear-gradient(top, #796245 1%, #7b664c 40%, #624f38 100%);
+            background: linear-gradient(to bottom, #796245 1%, #7b664c 40%, #624f38 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#796245', endColorstr='#624f38',GradientType=0 );
+            -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#796245', endColorstr='#624f38',GradientType=0 );
+          }
+        }
+        h3.collapsed {
+          a {
+            background: #969696;
+            background: -moz-linear-gradient(top, #969696 1%, #939393 40%, #797979 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #969696), color-stop(40%, #939393), color-stop(100%, #797979));
+            background: -webkit-linear-gradient(top, #969696 1%, #939393 40%, #797979 100%);
+            background: -o-linear-gradient(top, #969696 1%, #939393 40%, #797979 100%);
+            background: -ms-linear-gradient(top, #969696 1%, #939393 40%, #797979 100%);
+            background: linear-gradient(to bottom, #969696 1%, #939393 40%, #797979 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#969696', endColorstr='#797979',GradientType=0 );
+            -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#969696', endColorstr='#797979',GradientType=0 );
+          }
+        }
+      }
+      .view-grouping-content {
+        .views-row {
+          margin-bottom: 15px;
+          .views-field-title {
+            .field-content {
+              a {
+                color: color('red-70v');
+                font-size: 21px;
+                margin-bottom: 6px;
+                span {
+                  text-transform: uppercase;
+                  color: color('gray-cool-50');
+                  font-size: 23px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 {
+  .view-content {
+    .views-row {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 5px solid #E1E1E1;
+      overflow: visible;
+      margin-top: 0.75em;
+      position: relative;
+      .views-field-field-share {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .views-field-title {
+        .category {
+          color: #646464;
+          font-size: 26px;
+          margin-bottom: 6px;
+          text-transform: uppercase;
+        }
+        .title {
+          color: #900;
+          font-size: 22px;
+          line-height: 25px;
+        }
+      }
+      .views-field-field-enews-physician {
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 10px;
+      }
+      .views-field-field-image {
+        .field-content {
+          float: left;
+          img {
+            padding-right: 15px;
+            padding-bottom: 10px;
+          }
+          figcaption {
+            margin-right: 10px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  .attachment {
+    font-weight: normal !important;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 5px solid #E1E1E1;
+    table {
+      border: none;
+      background: none;
+      tr {
+        border: none;
+        background: none !important;
+        border-bottom: none !important;
+        td {
+          border: none;
+          background: none;
+          img {
+            height: 80px;
+            width: 80px;
+            max-width: none;
+          }
+        }
+        .views-field-title {
+          font-size: 14px;
+          .category {
+            color: #646464;
+            font-size: 21px;
+            text-transform: uppercase;
+          }
+          .title {
+            color: #900 !important;
+            font-size: 19px;
+            line-height: 23px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.view-id-e_newsletter_issue_title.view-display-id-block_1 {
+  h1 {
+    color: #774928;
+    font-family: "FranklinGothicFSMedCdRegular","Arial Narrow",Arial,sans-serif;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  time {
+    color: #900;
+  }
+}
+
+/* CGCI Data Matrix */
+
+.view-id-cgci_data_matrix.view-display-id-title {
+  table {
+    thead {
+      tr {
+        background-color: #900;
+        color: #fff;
+        th {
+          color: #FFF;
+          vertical-align: bottom;
+          border-right: 1px solid #EBEBEB;
+          border-bottom: 1px solid #EBEBEB;
+          font-size: 14px;
+          font-weight: 400;
+          text-align: left;
+          background-color: #900;
+        }
+      }
+    }
+    th.diseasebanner {
+      background-color: #BD5E1B;
+      color: #ffffff;
+      border-color: #ebebeb;
+      a {
+        color: #774928;
+      }
+    }
+    tr.disease-row {
+      th, td {
+        background-color: #FFFFF0;
+        border-color: #ebebeb;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+        padding: 0;
+        padding-bottom: 1%;
+        padding-left: 0.5%;
+        a {
+          color: #774928;
+        }
+      }
+      .colSN {
+        vertical-align: bottom;
+        padding-bottom: 2%
+      }
+      .colN {
+        vertical-align: top;
+        padding-left: 0;
+      }
+      th.disease {
+        vertical-align: top;
+      }
+      .view-display-id-gene_expression,
+      .view-display-id-copy_number,
+      .view-display-id-methylation,
+      .view-display-id-mirna,
+      .view-display-id-sequence,
+      .view-display-id-other,
+      .colN {
+        table {
+          margin: 0;
+          width: 100%;
+          .cellheader {
+            margin: 0px;
+            background-color: #FFCC80;
+            color: #000;
+            vertical-align: top;
+            padding: 5px 7px 10px;
+            height: 50px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.25em;
+            border: none;
+            padding-bottom: 0;
+          }
+          .cellbody {
+            margin: 0px;
+            vertical-align: top;
+            padding: 5px 10px 15px;
+            min-height: 50px;
+            border: none;
+          }
+        }
+      }
+    }
+    .Protected a {
+      color: #C23D00 !important;
+    }
+    .Protected a::after {
+      color: #C23D00;
+      content: "†"
+    }
+    .Public a::after {
+      content: "*"
+    }
+  }
+}
+
+#block-cgcilegend {
+  table {
+    border: 1px solid #ebebeb;
+  }
+  table th {
+    padding: 5px 10px;
+  }
+  thead tr {
+    background-color: #900 !important;
+    color: #fff;
+  }
+  tr {
+    background-color: #fcfcea !important;
+    border-bottom: 1px solid #ebebeb !important;
+    td {
+      padding: 5px 10px;
+      p {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+#block-cgcilegend {
+  table {
+    border: 1px solid #ebebeb;
+  }
+  table th {
+    padding: 5px 10px;
+  }
+  thead tr {
+    background-color: #900 !important;
+    color: #fff;
+  }
+  tr {
+    background-color: #fcfcea !important;
+    border-bottom: 1px solid #ebebeb !important;
+    td {
+      padding: 5px 10px;
+      p {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.block-views-blockcgci-data-matrix-last-updated {
+  position: absolute;
+  top: 50px;
+}
+
+#block-cgcidatamatrixbanner {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+#block-cgcidatamatrixintrotextblock {
+  padding-top: 20px;
+}
+
+/* TARGET Data Matrix */
+
+.view-id-target_data_matrix.view-display-id-title {
+  table {
+    thead {
+      tr {
+        background-color: #900;
+        color: #fff;
+        th {
+          color: #FFF;
+          vertical-align: bottom;
+          border-right: 1px solid #EBEBEB;
+          border-bottom: 1px solid #EBEBEB;
+          font-size: 14px;
+          font-weight: 400;
+          text-align: left;
+          background-color: #900;
+        }
+      }
+    }
+    th.diseasebanner {
+      background-color: #588EBC;
+      color: #ffffff;
+      border-color: #ebebeb;
+    }
+    tr.disease-row {
+      th, td {
+        background-color: #FFFFF0;
+        border-color: #ebebeb;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+        padding: 0;
+        padding-bottom: 1%;
+        padding-left: 0.5%;
+      }
+      .colSN {
+        vertical-align: bottom;
+        padding-bottom: 2%
+      }
+      .colN {
+        vertical-align: top;
+        padding-left: 0;
+      }
+      th.disease {
+        vertical-align: top;
+      }
+      .view-display-id-gene_expression,
+      .view-display-id-copy_number,
+      .view-display-id-methylation,
+      .view-display-id-mirna,
+      .view-display-id-sequence,
+      .view-display-id-other,
+      .colN {
+        table {
+          margin: 0;
+          width: 100%;
+          .cellheader {
+            margin: 0px;
+            background-color: #FFCC80;
+            color: #000;
+            vertical-align: top;
+            padding: 5px 7px 10px;
+            height: 50px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.25em;
+            border: none;
+            padding-bottom: 0;
+          }
+          .cellbody {
+            margin: 0px;
+            vertical-align: top;
+            padding: 5px 10px 15px;
+            min-height: 50px;
+            border: none;
+          }
+        }
+      }
+    }
+    .Protected a {
+      color: #C23D00 !important;
+    }
+    .Protected a::after {
+      color: #C23D00;
+      content: "†"
+    }
+    .Public a::after {
+      content: "*"
+    }
+  }
+}
+
+.target-data-matrix #block-uswds-ocg-pagetitle {
+  float: left;
+}
+
+.block-views-blocktarget-data-matrix-last-updated {
+  position: absolute;
+  top: 50px;
+}
+
+#block-targetdatamatrixlinks {
+  .field--name-body {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    .target-home,
+    .target-data,
+    .target-methods,
+    .target-awg,
+    .pgdi-overview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
+      flex-basis: 0;
+      img {
+        width: auto;
+        max-width: none;
+      }
+    }
+  }
+}
+
+#block-targetlegend {
+  table {
+    border: 1px solid #ebebeb;
+  }
+  table th {
+    padding: 5px 10px;
+  }
+  thead tr {
+    background-color: #900 !important;
+    color: #fff;
+  }
+  tr {
+    background-color: #fcfcea !important;
+    border-bottom: 1px solid #ebebeb !important;
+    td {
+      padding: 5px 10px;
+      p {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+/* CTD2 Data Portal */
+
+#ng-app {
+  width: 100%;
+}
+
+.datasets-number {
+  width: 100%;
+}
+
+#ng-app .centers-icon,
+#ng-app .methods-icon {
+  display: flex;
+  flex-direction: column;
+  span {
+    color: #900 !important;
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    font-weight: bolder;
+    background-color: white;
+    width: 100%;
+    opacity: 0.7
+  }
+}
+
+#ng-app .highlight {
+  color: white !important;
+  background-color: #900;
+  padding: 2px;
+}
+
+#ng-app #centers .highlight {
+  background: none;
+  padding: 0;
+  margin-right: 10px;
+}
+
+#ng-app #centers a {
+  margin-right: 10px;
+}
+
+#ng-app #centers img {
+  opacity: 0.5;
+}
+
+#ng-app #centers .highlight {
+  img {
+    opacity: 1;
+  }
+  span {
+    color: #000 !important;
+    background-color: white;
+    width: 100%;
+    opacity: 0.7;
+  }
+}
+
+#ng-app .lowlight {
+  color: #774928;
+}
+
+#ng-app .portal-navigation {
+  display: flex;
+}
+
+#ng-app #center-title,
+#ng-app #method-title,
+#ng-app #project-title,
+#ng-app #method-project-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#ng-app #center-title,
+#ng-app #method-title {
+  justify-content: flex-start;
+}
+
+#ng-app #centers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+#ng-app #centers a,
+#ng-app #center-title a,
+#ng-app #method-title a,
+#ng-app #project-title a,
+#ng-app #method-project-title a{
+  font-weight: 600;
+  color: #774928;
+  text-decoration: none;
+  line-height: 1.5em;
+  cursor: pointer;
+}
+
+#ng-app .title.ng-binding {
+  line-height: 1.5em;
+}
+
+#ng-app #centers a {
+  position: relative;
+}
+
+#ng-app #centers {
+  align-items: center;
+}
+
+#ng-app #centers .centers-inner {
+  flex-grow: 0;
+}
+
+#ng-app #centers .lowlight,
+#ng-app #centers .data-stack {
+  flex-grow: 0;
+}
+
+#ng-app #center-title,
+#ng-app #method-title{
+  width: 52%;
+  margin-right: -4%;
+  padding: 0.5%;
+  -webkit-clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  background-color: #fff2cc;
+  position: relative;
+}
+
+/*#ng-app #center-title::before,
+#ng-app #method-title::before {
+  content: '';
+  display: block;
+  width: 44%;
+  margin-right: -2%;
+  padding: 0.5%;
+  webkit-clip-path: polygon(92% 0%, 100% 50%, 92% 100%, 0% 100%, 10% 50%, 0% 0%);
+  clip-path: polygon(92% 0%, 100% 50%, 92% 100%, 0% 100%, 10% 50%, 0% 0%);
+  background-color: black;
+  position: absolute;
+}
+*/
+
+#ng-app #project-title,
+#ng-app #method-project-title {
+  width: 52%;
+  padding: 0.5%;
+  -webkit-clip-path: polygon(90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%, 0% 0%);
+  clip-path: polygon(90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%, 0% 0%);
+  background-color: #fff2cc;
+}
+
+#ng-app .center-title-inner,
+#ng-app .method-title-inner {
+  width: 95%; 
+}
+
+#ng-app .project-title-inner {
+  width: 80%;
+}
+
+#ng-app .project-title-inner-row {
+  padding-bottom: 5px;
+}
+
+#ng-app .project {
+  display: flex;
+}
+
+#ng-app .project .title {
+  width: 80%;
+}
+
+#ng-app .project .dataset-count {
+  width: 22%;
+  padding-left: 3%;
+}
+
+#ng-app #row-info,
+#ng-app #method-row-info {
+  display: flex;
+  margin-top: 20px;
+}
+
+#ng-app .row-info-approaches {
+  width: 65%;
+}
+
+#ng-app .row-info-remaining {
+  width: 35%;
+  padding-left: 5%
+}
+
+#ng-app h2 {
+  margin-top: 0;
+}
+
+#ng-app #experimental-approaches p {
+  margin: 0;
+}
+
+#ng-app .approaches-description,
+#ng-app #data,
+#ng-app #investigator,
+#ng-app #contact,
+#ng-app #submission-date {
+  margin-bottom: 20px;
+}
+
+#ng-app #data .using-data,
+#ng-app #data .data-header {
+  display: inline;
+  vertical-align: middle;
+}
+
+#ng-app #data .using-data {
+  height: 40px;
+}
+
+#ng-app #data {
+  border: solid 2px #990000;
+  padding-left: 10px;
+}
+
+#ng-app .approaches-description div,
+#ng-app .appraoches-description p,
+#ng-app .approaches-listing div,
+#ng-app .approaches-listing p {
+  display: inline;
+}
+
+#ng-app .approaches-listing {
+  margin-bottom: 10px;
+}
+
+#ng-app .approaches-listing-title {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.ctd2-data-portal h1 {
+  margin-bottom: 0;
+}
+
+.view-display-id-last_updated_data_portal {
+  font-style: italic;
+  color: #323232;
+}
+
+#data-portal-app {width: 100%; margin-top:-20px}
+
+.new-datasets-number {width: 100%}
+
+.ctd2-description {margin-bottom: 0}
+
+/* PGDI */
+
+.view-id-pgdi_content.view-display-id-display {
+  .dropdowns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .usa-accordion li {
+    list-style-image: none;
+    button {
+      text-align: center;
+      background-color: #fff;
+      color: #774928;
+    }
+    .usa-accordion__content {
+      fieldset {
+        .fieldset-wrapper {
+          .form-checkboxes {
+            display: flex;
+            .pgdi-column {
+              flex: 1;
+              display: inline-block;
+              vertical-align: top;
+              .usa-checkbox {
+                margin-right: 5px;
+                margin-bottom: 5px;
+                margin-left: 5px;
+                input[type=checkbox] {
+                  position: absolute;
+                  left: -9999px;
+                }
+                input[type=checkbox]:checked + label {
+                  background: #900;
+                  color: #faec7a;
+                  font-weight: bold;
+                }
+                label {
+                  cursor: pointer;
+                  padding: 5px;
+                  height: 90px;
+                  text-align: center;
+                  display: block;
+                  border-radius: 5px;
+                  -moz-border-radius: 5px;
+                  -webkit-border-radius: 5px;
+                  border: 0px solid #900;
+                  background-color: #e5e3e3;
+                  font-weight: bold;
+                }
+                label::before {
+                  background: none;
+                  box-shadow: none;
+                }
+              }
+            } 
+          }
+        }
+      }
+    }
+  }
+  .form-actions {
+    text-align: center;
+  }
+  table {
+    border: 1px solid #ebebeb;
+    thead tr {
+      background-color: #900 !important;
+      color: #fff;
+      th {
+        padding: 5px 10px;
+        border-right: 1px solid #ebebeb;
+        background-color: #900 !important;
+        text-align: center;
+      }
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #fff;
+      border-bottom: 1px solid #ebebeb;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #fcfcea !important;
+      border-bottom: 1px solid #ebebeb !important;
+    }
+    td {
+      padding: 5px 10px;
+      background: none;
+    }
+  }
+}
+
+.pgdi-header-items {
+  display: flex;
+  justify-content: space-between;
+  .title {
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Announcements */
+
+.region-highlighted {
+  padding-bottom: 20px;
+}
+
+#block-views-block-announcement-block-1,
+#block-views-block-announcement-block-2,
+#block-views-block-announcement-block-3 {
+  padding-top: 10px;
+  .views-row:before {
+    border-color: #ffd87c #fcfeff #ffd87c #fcfeff;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-width: 23px 23px 0 0;
+    border-style: solid;
+    display: block;
+    width: 0;
+  }
+  .views-row {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-repeat: repeat;
+    margin-bottom: 0;
+    background: #f6b92a;
+    background: -moz-linear-gradient(left,#f6b92a 0%,#ffd87c 75%);
+    background: -webkit-gradient(linear,left top,right top,color-stop(0%,#f6b92a),color-stop(75%,#ffd87c));
+    background: -webkit-linear-gradient(left,#f6b92a 0%,#ffd87c 75%);
+    background: -o-linear-gradient(left,#f6b92a 0%,#ffd87c 75%);
+    background: -ms-linear-gradient(left,#f6b92a 0%,#ffd87c 75%);
+    background: linear-gradient(to right,#f6b92a 0%,#ffd87c 75%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6b92a',endColorstr='#ffd87c',GradientType=1);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6b92a',endColorstr='#ffd87c',GradientType=1);
+    background-size: 100%;
+    position: relative;
+    .views-field-body {
+      padding-top: 0;
+      padding-left: 0;
+      width: 100%;
+      font-family: "FranklinGothicFSMedCdRegular","Arial Narrow",Arial,sans-serif;
+      .field-content {
+        padding-left: 1.25%;
+        width: 96%;
+        font-size: 24px;
+        p {
+          margin-bottom: 0;
+          color: #614e37;
+          margin-top: 0;
+          a {
+            color: #900;
+          }
+        }
+      }
+    }
+  }
+}
+
+.front .view-announcement .views-row:before, .view-announcement .views-row:before {
+  border-color: #ffd87c #fcfeff #ffd87c #fcfeff;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-width: 23px 23px 0 0;
+  border-style: solid;
+  display: block;
+  width: 0;
 }

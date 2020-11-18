@@ -16,6 +16,10 @@ libraries-override:
 # Add the CSS to CKEditor, so that custom entries in "Style" will work.
 ckeditor_stylesheets:
   - css/styles.css
+  
+libraries:
+  - 'uswds_ocg/target_methods'
+  - 'uswds_ocg/uswds_ocg'
 
 regions:
   header_top: 'Above Header'

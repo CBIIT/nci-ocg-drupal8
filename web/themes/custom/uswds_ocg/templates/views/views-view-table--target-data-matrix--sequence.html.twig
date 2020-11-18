@@ -1,0 +1,289 @@
+{#
+/**
+ * @file
+ * Default theme implementation for displaying a view as a table.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ *   - class: HTML classes that can be used to style contextually through CSS.
+ * - title : The title of this group of rows.
+ * - header: The table header columns.
+ *   - attributes: Remaining HTML attributes for the element.
+ *   - content: HTML classes to apply to each header cell, indexed by
+ *   the header's key.
+ *   - default_classes: A flag indicating whether default classes should be
+ *     used.
+ * - caption_needed: Is the caption tag needed.
+ * - caption: The caption for this table.
+ * - accessibility_description: Extended description for the table details.
+ * - accessibility_summary: Summary for the table details.
+ * - rows: Table row items. Rows are keyed by row number.
+ *   - attributes: HTML classes to apply to each row.
+ *   - columns: Row column items. Columns are keyed by column number.
+ *     - attributes: HTML classes to apply to each column.
+ *     - content: The column content.
+ *   - default_classes: A flag indicating whether default classes should be
+ *     used.
+ * - responsive: A flag indicating whether table is responsive.
+ * - sticky: A flag indicating whether table header is sticky.
+ * - summary_element: A render array with table summary information (if any).
+ *
+ * @see template_preprocess_views_view_table()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set pid = rows[0].columns['id'].content[0].field_output|render|striptags|spaceless %}
+{% set nid = rows[0].columns['nid'].content[0].field_output|render|striptags|spaceless %}
+
+{% if column1 matches '/^\\d+$/' %}
+  <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
+    <table>
+      <tbody>
+        <tr>
+          {% for key, column in rows[column1].columns %}
+            {% if key == 'id' or key == 'nid' or key == 'field_availability' or key == 'field_column_number' %}
+
+            {%- else -%}
+            {% if column.default_classes %}
+              {%
+              set column_classes = [
+                'views-field'
+              ]
+              %}
+              {% for field in column.fields %}
+                {% set column_classes = column_classes|merge(['views-field-' ~ field]) %}
+              {% endfor %}
+            {% endif %}
+            <th id="{{ pid }}_seq" scope="col" class="cellheader">
+
+              {%- if column.wrapper_element -%}
+                <{{ column.wrapper_element }}>
+                 {% for content in column.content %}
+                    {{ content.separator }}{{ content.field_output }}
+                 {% endfor %}
+                </{{ column.wrapper_element }}>
+              {%- else -%}
+                {% for content in column.content %}
+                  {{- content.separator }}{{ content.field_output -}}
+                {% endfor %}
+              {%- endif %}
+
+            </th>
+          {%- endif -%}
+          {% endfor %}
+        </tr>
+        <tr>
+          <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
+            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+{%- else -%}
+  <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
+    <table>
+      <tbody>
+        <tr>
+          <th id="{{ pid }}_seq" scope="col" class="cellheader">
+          </th>
+        </tr>
+        <tr>
+          <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
+            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+{% endif %}
+
+{% if column2 matches '/^\\d+$/' %}
+  <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
+    <table>
+      <tbody>
+        <tr>
+          {% for key, column in rows[column2].columns %}
+            {% if key == 'id' or key == 'nid' or key == 'field_availability' or key == 'field_column_number' %}
+
+            {%- else -%}
+            {% if column.default_classes %}
+              {%
+              set column_classes = [
+                'views-field'
+              ]
+              %}
+              {% for field in column.fields %}
+                {% set column_classes = column_classes|merge(['views-field-' ~ field]) %}
+              {% endfor %}
+            {% endif %}
+            <th id="{{ pid }}_seq" scope="col" class="cellheader">
+
+              {%- if column.wrapper_element -%}
+                <{{ column.wrapper_element }}>
+                 {% for content in column.content %}
+                    {{ content.separator }}{{ content.field_output }}
+                 {% endfor %}
+                </{{ column.wrapper_element }}>
+              {%- else -%}
+                {% for content in column.content %}
+                  {{- content.separator }}{{ content.field_output -}}
+                {% endfor %}
+              {%- endif %}
+
+            </th>
+          {%- endif -%}
+          {% endfor %}
+        </tr>
+        <tr>
+          <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
+            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+{%- else -%}
+  <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
+    <table>
+      <tbody>
+        <tr>
+          <th id="{{ pid }}_seq" scope="col" class="cellheader">
+          </th>
+        </tr>
+        <tr>
+          <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
+            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+{% endif %}
+  
+  {% if column3 matches '/^\\d+$/' %}
+  <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
+    <table>
+      <tbody>
+        <tr>
+          {% for key, column in rows[column3].columns %}
+            {% if key == 'id' or key == 'nid' or key == 'field_availability' or key == 'field_column_number' %}
+
+            {%- else -%}
+            {% if column.default_classes %}
+              {%
+              set column_classes = [
+                'views-field'
+              ]
+              %}
+              {% for field in column.fields %}
+                {% set column_classes = column_classes|merge(['views-field-' ~ field]) %}
+              {% endfor %}
+            {% endif %}
+            <th id="{{ pid }}_seq" scope="col" class="cellheader">
+
+              {%- if column.wrapper_element -%}
+                <{{ column.wrapper_element }}>
+                 {% for content in column.content %}
+                    {{ content.separator }}{{ content.field_output }}
+                 {% endfor %}
+                </{{ column.wrapper_element }}>
+              {%- else -%}
+                {% for content in column.content %}
+                  {{- content.separator }}{{ content.field_output -}}
+                {% endfor %}
+              {%- endif %}
+
+            </th>
+          {%- endif -%}
+          {% endfor %}
+        </tr>
+        <tr>
+          <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
+            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+{%- else -%}
+  <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
+    <table>
+      <tbody>
+        <tr>
+          <th id="{{ pid }}_seq" scope="col" class="cellheader">
+          </th>
+        </tr>
+        <tr>
+          <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
+            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+{% endif %}
+  
+{% if column4 matches '/^\\d+$/' %}
+  <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
+    <table>
+      <tbody>
+        <tr>
+          {% for key, column in rows[column4].columns %}
+            {% if key == 'id' or key == 'nid' or key == 'field_availability' or key == 'field_column_number' %}
+
+            {%- else -%}
+            {% if column.default_classes %}
+              {%
+              set column_classes = [
+                'views-field'
+              ]
+              %}
+              {% for field in column.fields %}
+                {% set column_classes = column_classes|merge(['views-field-' ~ field]) %}
+              {% endfor %}
+            {% endif %}
+            <th id="{{ pid }}_seq" scope="col" class="cellheader">
+
+              {%- if column.wrapper_element -%}
+                <{{ column.wrapper_element }}>
+                 {% for content in column.content %}
+                    {{ content.separator }}{{ content.field_output }}
+                 {% endfor %}
+                </{{ column.wrapper_element }}>
+              {%- else -%}
+                {% for content in column.content %}
+                  {{- content.separator }}{{ content.field_output -}}
+                {% endfor %}
+              {%- endif %}
+
+            </th>
+          {%- endif -%}
+          {% endfor %}
+        </tr>
+        <tr>
+          <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
+            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+{%- else -%}
+  <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
+    <table>
+      <tbody>
+        <tr>
+          <th id="{{ pid }}_seq" scope="col" class="cellheader">
+          </th>
+        </tr>
+        <tr>
+          <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
+            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+{% endif %}

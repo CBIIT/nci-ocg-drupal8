@@ -1,0 +1,113 @@
+{#
+/**
+ * @file
+ * Theme override for a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @see template_preprocess_views_exposed_form()
+ */
+#}
+{% if q is not empty %}
+  {#
+    This ensures that, if clean URLs are off, the 'q' is added first,
+    as a hidden form element, so that it shows up first in the POST URL.
+  #}
+  {{ q }}
+{% endif %}
+<div class="form--inline clearfix">
+  <div class="dropdowns">
+    {{ form.field_cancer_type_target_id }}
+    {{ form.field_total_number_patient_wgs_value }}
+    {{ form.field_total_number_patient_wgs_value_1 }}
+    {{ form.field_total_patient_transcriptom_value }}
+    {{ form.field_was_clinical_outcome_data__value }}
+  </div>
+  <ul class="usa-accordion add-list-reset">
+    <li>    <button type="button" aria-controls="edit-secondary-content" role="button" aria-expanded="false" aria-pressed="false" class="usa-accordion__button">Choose different table columns for the display</button>
+      <div id="edit-secondary-content" class="usa-accordion__content" hidden="">
+        <fieldset data-drupal-selector="edit-views-fields-on-off-form" id="edit-views-fields-on-off-form--wrapper" class="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
+          <legend>
+            <span class="fieldset-legend"></span>
+          </legend>
+          <div class="fieldset-wrapper">
+
+            <div id="edit-views-fields-on-off-form" class="form-checkboxes">
+              <div class="pgdi-column">
+                {{ form.views_fields_on_off_form['title'] }}
+                {{ form.views_fields_on_off_form['field_project_country'] }}
+                {{ form.views_fields_on_off_form['field_pgdi_project_status'] }}
+                {{ form.views_fields_on_off_form['field_project_website'] }}
+                {{ form.views_fields_on_off_form['field_is_the_project_data_availa'] }}
+                {{ form.views_fields_on_off_form['field_are_collaborations_possibl'] }}
+              </div>
+              <div class="pgdi-column">
+                {{ form.views_fields_on_off_form['view'] }}
+                {{ form.views_fields_on_off_form['view_1'] }}
+                {{ form.views_fields_on_off_form['field_organ_site_of_tumor'] }}
+                {{ form.views_fields_on_off_form['field_patient_age_range'] }}
+                {{ form.views_fields_on_off_form['field_gender'] }}
+              </div>
+              <div class="pgdi-column">
+                {{ form.views_fields_on_off_form['field_total_number_of_patient_ca'] }}
+                {{ form.views_fields_on_off_form['field_primary_tumor_sample'] }}
+                {{ form.views_fields_on_off_form['field_normal_sample'] }}
+                {{ form.views_fields_on_off_form['field_metastatic_sample'] }}
+                {{ form.views_fields_on_off_form['field_was_clinical_outcome_data'] }}
+                {{ form.views_fields_on_off_form['field_is_the_outcome_data_availa'] }}
+              </div>
+              <div class="pgdi-column">
+                {{ form.views_fields_on_off_form['field_total_number_patient_wxs'] }}
+                {{ form.views_fields_on_off_form['field_wxs_data'] }}
+                {{ form.views_fields_on_off_form['field_average_coverage_for_each'] }}
+                {{ form.views_fields_on_off_form['field_paired_end_reads'] }}
+                {{ form.views_fields_on_off_form['field_identical_method_technolo'] }}
+                {{ form.views_fields_on_off_form['field_number_of_cases_with_wxs'] }}
+                {{ form.views_fields_on_off_form['field_what_was_the_achieved_aver'] }}
+              </div>
+              <div class="pgdi-column">
+                {{ form.views_fields_on_off_form['field_total_number_patient_wgs'] }}
+                {{ form.views_fields_on_off_form['field_number_of_cases_with_wgs_d'] }}
+                {{ form.views_fields_on_off_form['field_average_coverage'] }}
+                {{ form.views_fields_on_off_form['field_read_length'] }}
+                {{ form.views_fields_on_off_form['field_were_all_samples_sequenced'] }}
+                {{ form.views_fields_on_off_form['field_number_of_cases_with_wgs'] }}
+                {{ form.views_fields_on_off_form['field_achieved_average'] }}
+              </div>
+              <div class="pgdi-column">
+                {{ form.views_fields_on_off_form['field_total_patient_transcriptom'] }}
+                {{ form.views_fields_on_off_form['field_number_of_cases_with_targe'] }}
+                {{ form.views_fields_on_off_form['field_location_of_the_bed_file'] }}
+                {{ form.views_fields_on_off_form['field_how_many_cases_received_bo'] }}
+                {{ form.views_fields_on_off_form['field_capture_reagent_product_co'] }}
+              </div>
+              <div class="pgdi-column">
+                {{ form.views_fields_on_off_form['field_other_molecular_data_avail'] }}
+                {{ form.views_fields_on_off_form['field_is_array_data_available_'] }}
+                {{ form.views_fields_on_off_form['field_snp_based_copy_number_data'] }}
+                {{ form.views_fields_on_off_form['field_is_gene_expression_data_av'] }}
+                {{ form.views_fields_on_off_form['field_data_website'] }}
+                {{ form.views_fields_on_off_form['field_capture_reagent_wgs'] }}
+              </div>
+              <div class="pgdi-column">
+                {{ form.views_fields_on_off_form['view_2'] }}
+                {{ form.views_fields_on_off_form['view_3'] }}
+                {{ form.views_fields_on_off_form['views_conditional_field'] }}
+              </div>
+              {{ form.views_fields_on_off_form|without('title', 'field_project_country', 'field_pgdi_project_status', 'field_project_website', 'field_is_the_project_data_availa', 'field_are_collaborations_possibl', 'view', 'view_1', 'view_2', 'view_3', 'field_organ_site_of_tumor', 'field_patient_age_range', 'field_gender', 'field_total_number_of_patient_ca', 'field_primary_tumor_sample',
+'field_normal_sample', 'field_normal_sample', 'field_metastatic_sample', 'field_was_clinical_outcome_data', 'field_is_the_outcome_data_availa','field_total_number_patient_wxs', 
+'field_wxs_data', 'field_average_coverage_for_each', 'field_paired_end_reads', 'field_identical_method_technolo', 'field_number_of_cases_with_wxs',
+'field_what_was_the_achieved_aver', 'field_total_number_patient_wgs', 'field_number_of_cases_with_wgs_d', 'field_average_coverage', 'field_read_length', 
+'field_were_all_samples_sequenced', 'field_number_of_cases_with_wgs', 'field_achieved_average', 'field_total_patient_transcriptom', 'field_number_of_cases_with_targe', 
+'field_location_of_the_bed_file', 'field_how_many_cases_received_bo', 'field_capture_reagent_product_co', 'field_other_molecular_data_avail', 'field_is_array_data_available_', 
+'field_snp_based_copy_number_data', 'field_is_gene_expression_data_av', 'field_data_website', 'field_capture_reagent_wgs', 'views_conditional_field') }}
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </li>
+  </ul>
+
+  {{ form|without('field_cancer_type_target_id', 'field_total_number_patient_wgs_value', 'field_total_number_patient_wgs_value_1', 'field_total_patient_transcriptom_value', 'field_was_clinical_outcome_data__value', 'views_fields_on_off_form', 'secondary') }}
+</div>
