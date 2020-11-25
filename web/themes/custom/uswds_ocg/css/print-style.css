@@ -1,0 +1,122 @@
+body {
+  font-family: Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+}
+
+h1 {
+    color: #774928;
+    font-family: "FranklinGothicFSMedCdRegular","Arial Narrow",Arial,sans-serif;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+time {
+  color: #900;
+}
+.printpdf-icon, .views-field-nothing {
+  display: none;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 td {
+  padding: 5px 10px;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .view-content .views-row {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 5px solid #e1e1e1;
+    overflow: visible;
+    margin-top: .75em;
+    position: relative;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .attachment table tr td img {
+    height: 80px;
+    width: 80px;
+    max-width: none;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .attachment table tr .views-field-title {
+    font-size: 14px;
+    font-family: "FranklinGothicFSMedCdRegular","Arial Narrow",Arial,sans-serif;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .attachment table tr a {
+    text-decoration: none;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .attachment table, .view-id-taxonomy_term.view-display-id-page_1 .attachment table tr td {
+    border: 0;
+    background: 0 0;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .attachment table tr .views-field-title .category {
+    color: #646464;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-family: "FranklinGothicFSMedCdRegular","Arial Narrow",Arial,sans-serif;
+    font-weight: normal;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .attachment table tr .views-field-title .title {
+    color: #900!important;
+    font-size: 19px;
+    line-height: 23px;
+    font-family: "FranklinGothicFSMedCdRegular","Arial Narrow",Arial,sans-serif;
+    font-weight: normal;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .attachment {
+    font-weight: 400!important;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 5px solid #e1e1e1;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .view-content .views-row {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 5px solid #e1e1e1;
+    overflow: visible;
+    margin-top: .75em;
+    position: relative;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .view-content .views-row .views-field-title .category {
+    color: #646464;
+    font-size: 26px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .view-content .views-row .views-field-title .title {
+    color: #900;
+    font-size: 22px;
+    line-height: 25px;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .view-content .views-row .views-field-field-enews-physician {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .view-content .views-row .views-field-field-image .field-content {
+    float: left;
+}
+
+figure {
+    margin: 1em 40px;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .view-content .views-row .views-field-field-image .field-content img {
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+.view-id-taxonomy_term.view-display-id-page_1 .view-content .views-row .views-field-field-image .field-content figcaption {
+    margin-right: 10px;
+    text-align: center;
+}
+

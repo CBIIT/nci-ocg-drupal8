@@ -1,0 +1,141 @@
+<?php
+
+/**
+ * @file
+ * Provides a Views Global field that allows users to turn fields on/off.
+ */
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function views_fields_on_off_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  $hasFields = array_key_exists('fields', $view->display_handler->options);
+  if ($hasFields) {
+    $useDefaultDisplay = !$view->display_handler->options['fields'] &&
+      $view->display_handler->default_display->options['fields'];
+
+    if ($useDefaultDisplay) {
+      $fields = $view->display_handler->default_display->options['fields'];
+    }
+    else {
+      $fields = $view->display_handler->options['fields'];
+    }
+
+    $hasViewsFieldsOnOffHandler = FALSE;
+
+    foreach ($fields as $field) {
+      if (array_key_exists('plugin_id', $field)) {
+        if ($field['plugin_id'] === 'views_fields_on_off_form') {
+          $hasViewsFieldsOnOffHandler = TRUE;
+        }
+      }
+    }
+
+    if ($hasViewsFieldsOnOffHandler) {
+      // Grab the fields_on_off values that have been submitted already.
+      $params = \Drupal::request()->query->all();
+      // This is for a GET request.
+      // If the view is submitted through AJAX, like in view preview, it will be
+      // a POST request. Merge the parameter arrays and we’ll get our values.
+      $postParams = \Drupal::request()->request->all();
+      $params = array_merge($params, $postParams);
+
+      // We need $on_off_submitted because if the form is submitted with no
+      // checkboxes checked, none of the fields_on_off values will be present,
+      // so it thinks this is a fresh view and all the columns should be
+      // checked.
+      $on_off_submitted = array_key_exists('fields_on_off_hidden_submitted', $params);
+
+      // Get all the fields known to be checked based on the params.
+      $checked_fields = [];
+
+      foreach ($params as $key => $value) {
+        if (strpos($key, 'views_fields_on_off_form') === 0) {
+          if (!empty($view->getHandler($display_id, 'field', $key)['exposed_select_type'])
+            && (($view->getHandler($display_id, 'field', $key)['exposed_select_type'] === 'radios')
+              || ($view->getHandler($display_id, 'field', $key)['exposed_select_type'] === 'select'))) {
+            $reformatted_value = [];
+            $reformatted_value[$value] = $value;
+            $checked_fields = array_merge($checked_fields, $reformatted_value);
+          }
+          elseif (!empty($view->getHandler($display_id, 'field', $key)['exposed_select_type'])
+            && ($view->getHandler($display_id, 'field', $key)['exposed_select_type'] === 'multi_select')) {
+            foreach ($value as $result) {
+              $reformatted_value = [];
+              $reformatted_value[$result] = $result;
+              $checked_fields = array_merge($checked_fields, $reformatted_value);
+            }
+          }
+          else {
+            $checked_fields = array_merge($checked_fields, $value);
+          }
+        }
+        // Reformat $checked_fields to be simple key => boolean (and if it is
+        // present, then it is always FALSE: Don't exlcude (do show).
+        array_walk($checked_fields, function(&$value, $key) {
+          $value = FALSE;
+        });
+      }
+
+      // Get the IDs of fields controlled by this module.
+      $fields_on_off_controlled_fields = array_filter($fields['views_fields_on_off_form']['fields']);
+
+      // If filter was not yet submitted by the user, set defaults according
+      // to Views field definitions (ie. If the actual field's config dictates
+      // that the field be hidden, then let's honor that), and then apply these
+      // filters.
+      if (!$on_off_submitted) {
+        $default_settings = $view->getHandler($display_id, 'field', 'views_fields_on_off_form')['fields_default_state'];
+        foreach ($fields_on_off_controlled_fields as $on_off_key => $on_off_value) {
+          if (array_key_exists($on_off_key, $default_settings)) {
+            $checked_fields[$on_off_key] = $fields[$on_off_key]['exclude'] ? $fields[$on_off_key]['exclude'] : (bool) !$default_settings[$on_off_key];
+          }
+          else {
+            $checked_fields[$on_off_key] = $fields[$on_off_key]['exclude'];
+          }
+        }
+      }
+
+      // Turn fields on and off according to submitted or field config defaults.
+      foreach ($fields_on_off_controlled_fields as $key) {
+        $fields[$key]['exclude'] = isset($checked_fields[$key]) ? $checked_fields[$key] : TRUE;
+      }
+
+      // Set exposed filter form to reflect defaults or submitted values.
+      $exposed_filters = $view->getExposedInput();
+      $checked_fields_as_filter = array_keys(array_filter($checked_fields, function($value) {
+        return !$value;
+      }));
+      $exposed_filters['views_fields_on_off_form'] = array_combine($checked_fields_as_filter, $checked_fields_as_filter);
+      $view->setExposedInput($exposed_filters);
+
+      // And always hide the on/off field or it'll just show up empty.
+      foreach ($fields as $key => $value) {
+        if (strpos($key, 'views_fields_on_off_form') === 0) {
+          $fields[$key]['exclude'] = 1;
+        }
+      }
+
+      if ($useDefaultDisplay) {
+        $view->display_handler->default_display->options['fields'] = $fields;
+      }
+      else {
+        $view->display_handler->options['fields'] = $fields;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function views_fields_on_off_preprocess_views_view(&$variables) {
+  $plugin_id = 'views_fields_on_off_form';
+  $view = $variables['view'];
+
+  if ($view->getHandler($view->current_display, 'filter', $plugin_id)) {
+    $view->filter[$plugin_id]->preprocess($variables);
+  }
+}

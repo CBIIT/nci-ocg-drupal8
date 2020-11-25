@@ -7,3 +7,8 @@ uswds_ocg:
   version: 1.0.0
   js:
     assets/js/uswds_ocg.js: {}
+    
+print-styling:
+  css:
+    theme:
+      css/print-style.css: {}

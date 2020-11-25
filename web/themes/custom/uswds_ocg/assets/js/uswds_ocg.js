@@ -24,12 +24,17 @@ $(document).ready (function (){
   });
   
   $(".expand-collapse").click(function(e) {
-    if($('fieldset').hasClass('collapsed')) {
-      $('fieldset').removeClass('collapsed');
+    $(".ui-accordion-content").show();
+    if($('.views-accordion-header').hasClass('ui-accordion-header-collapsed')) {
+      $(".ui-accordion-content").show();
+      $('.views-accordion-header').removeClass('ui-accordion-header-collapsed').attr('aria-selected', 'true').attr('aria-expanded', 'true').addClass('ui-state-active').addClass('ui-accordion-header-active');
+      $('.ui-accordion-header-icon').removeClass('ui-icon ui-icon-triangle-1-e').addClass('ui-icon ui-icon-triangle-1-s');
       $(this).text('Collapse All');
       e.preventDefault();
     } else {
-      $('fieldset').addClass('collapsed');
+      $(".ui-accordion-content").hide();
+      $('.views-accordion-header').addClass('ui-accordion-header-collapsed').attr('aria-selected', 'false').attr('aria-expanded', 'false').removeClass('ui-state-active').removeClass('ui-accordion-header-active');
+      $('.ui-accordion-header-icon').removeClass('ui-icon ui-icon-triangle-1-s').addClass('ui-icon ui-icon-triangle-1-e');
       $(this).text('Expand All');
       e.preventDefault();
     }

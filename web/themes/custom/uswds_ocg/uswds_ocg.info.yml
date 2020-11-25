@@ -3,6 +3,11 @@ type: theme
 description: 'A subtheme of USWDS using USWDS-gulp.'
 core: 8.x
 base theme: uswds
+package: Entity Print
+
+entity_print:
+  view:
+    all: 'uswds_ocg/print-styling'
 
 # The following overrides will work if css is compiled to the root, update if different.
 libraries-override:
@@ -20,7 +25,7 @@ ckeditor_stylesheets:
 libraries:
   - 'uswds_ocg/target_methods'
   - 'uswds_ocg/uswds_ocg'
-
+  
 regions:
   header_top: 'Above Header'
   header: 'Header'
