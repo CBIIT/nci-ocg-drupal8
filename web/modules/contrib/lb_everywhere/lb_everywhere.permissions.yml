@@ -1,0 +1,13 @@
+add lbeverywhere entities:
+  title: 'Create new LBEverywhere entities'
+
+administer lbeverywhere entities:
+  title: 'Administer LBEverywhere entities'
+  description: 'Allow to access the administration form to configure LBEverywhere entities.'
+  restrict access: true
+
+delete lbeverywhere entities:
+  title: 'Delete LBEverywhere entities'
+
+edit lbeverywhere entities:
+  title: 'Edit LBEverywhere entities'

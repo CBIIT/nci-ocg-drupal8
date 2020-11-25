@@ -1,0 +1,5 @@
+lbeverywhere.controller:
+  title: 'Regions'
+  route_name: lbeverywhere.controller
+  description: 'List Layout Builder Everywhere regions'
+  parent: system.admin_structure

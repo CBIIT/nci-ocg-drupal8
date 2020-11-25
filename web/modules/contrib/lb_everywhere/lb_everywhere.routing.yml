@@ -1,0 +1,7 @@
+lbeverywhere.controller:
+  path: '/admin/structure/lbeverywhere'
+  defaults:
+    _controller: '\Drupal\lb_everywhere\Controller\LBEverywhereController::build'
+    _title: 'Layout Builder Everywhere'
+  requirements:
+    _permission: 'administer blocks'

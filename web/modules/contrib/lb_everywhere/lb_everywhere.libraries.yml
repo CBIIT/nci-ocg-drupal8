@@ -1,0 +1,10 @@
+lb_everywhere:
+  version: VERSION
+  css:
+    theme:
+      css/lb_everywhere.css: {}
+  js:
+    js/lb_everywhere.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.dialog.ajax

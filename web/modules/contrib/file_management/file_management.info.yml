@@ -1,0 +1,11 @@
+name: File Management
+# core: 8.x
+description: Allows you to manage files.
+package: Media
+type: module
+
+# Information added by Drupal.org packaging script on 2019-03-22
+version: '8.x-1.0-alpha3'
+core: '8.x'
+project: 'file_management'
+datestamp: 1553253788

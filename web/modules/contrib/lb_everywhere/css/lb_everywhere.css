@@ -1,0 +1,101 @@
+html {
+  height: auto;
+}
+
+/* Hide layout builder buttons from main content area on non-admin pages. */
+.js body:not(.path-admin) .layout-builder-form #edit-submit,
+.js body:not(.path-admin) .layout-builder-form #edit-discard-changes,
+.js body:not(.path-admin) .layout-builder-form #edit-revert {
+  display: none;
+}
+
+/* Remove margins from the lb toolbar list items. */
+#toolbar-item-lb-mode-tray .item-list li {
+  margin: 0;
+}
+
+a[data-toolbar-mode-active="true"] {
+  position: relative;
+  z-index: 502;
+}
+
+a[data-toolbar-mode-active="true"],
+a[data-toolbar-mode-active="true"]:focus {
+  background-color: #1a89c9;
+}
+
+a[data-toolbar-mode-active="true"]:hover {
+  background-color: #26a3dd;
+}
+
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item-lb-mode,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item-lb-mode:focus,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item-lb-mode:hover,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item-lb-mode.is-active {
+  background-image: none;
+}
+
+.region__select-mode {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.region__select-mode::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  border: dashed 2px #8e5908;
+  background-color: rgba(255, 235, 187, 0.3);
+  background-image: repeating-linear-gradient(-135deg, transparent 0 8px, rgba(0, 0, 0, 0.1) 10px 2px);
+}
+
+.region__select-mode.region-content::before {
+  border: dashed 2px #0b5386;
+  background-color: rgba(157, 192, 214, 0.3);
+  background-image: none;
+}
+
+.region-mode-overlay {
+  position: relative;
+  height: auto;
+}
+
+.region-mode-overlay::after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.region-mode-overlay .region__select-mode {
+  background-color: #fff;
+}
+
+.layout-builder {
+  padding: 0;
+  border: 0;
+  background-color: initial;
+}
+
+.layout-builder-form {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  min-width: 100%;
+  padding: 0 1.5em 0.5em;
+  border: 3px solid #2f91da;
+  background-color: #fff;
+}
+
+.toolbar .toolbar-bar .toolbar-tab[hidden="hidden"] {
+  display: none;
+}

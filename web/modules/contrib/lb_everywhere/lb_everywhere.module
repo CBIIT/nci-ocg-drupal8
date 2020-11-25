@@ -1,0 +1,172 @@
+<?php
+
+/**
+ * @file
+ * Contains lb_everywhere.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\lb_everywhere\Form\FormAlter;
+use Drupal\lb_everywhere\Form\RegionForm;
+use Drupal\lb_everywhere\LBEverywhereBlockListBuilder;
+
+/**
+ * Implements hook_help().
+ */
+function lb_everywhere_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the lb_everywhere module.
+    case 'help.page.lb_everywhere':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_info().
+ */
+function lb_everywhere_entity_bundle_info() {
+  $bundles = [];
+  $config = \Drupal::config('lb_everywhere.settings');
+  $region_maps = $config->get('region_map') ?: [];
+  foreach ($region_maps as $theme => $region_map) {
+    $region_list = system_region_list($theme);
+    foreach ($region_map as $region) {
+      $bundles['lbeverywhere'][$theme . '__' . $region]['label'] = $region_list[$region];
+    }
+  }
+  return $bundles;
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function lb_everywhere_entity_type_alter(array &$entity_types) {
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+  $entity_types['block']
+    ->setListBuilderClass(LBEverywhereBlockListBuilder::class);
+
+  // @todo Remove after https://www.drupal.org/node/3068212 is fixed.
+  $entity_types['lbeverywhere']->setFormClass('layout_builder', RegionForm::class);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function lb_everywhere_form_entity_view_display_layout_builder_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_state->getFormObject()->getEntity()->getTargetEntityTypeId() !== 'lbeverywhere') {
+    return;
+  }
+
+  \Drupal::classResolver(FormAlter::class)->alterLayoutForm($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for layout_builder_discard_changes.
+ */
+function lb_everywhere_form_layout_builder_discard_changes_alter(&$form, FormStateInterface $form_state) {
+  \Drupal::classResolver(FormAlter::class)->alterDiscardChangesForm($form, $form_state);
+}
+
+/**
+ * Implements hook_local_tasks_alter().
+ */
+function lb_everywhere_local_tasks_alter(&$local_tasks) {
+  // Remove all Layout Builder UI local tasks.
+  $local_tasks = array_filter($local_tasks, function ($local_task) {
+    return !isset($local_task) || $local_task['id'] !== 'layout_builder_ui';
+  });
+}
+
+/**
+ * Implements hook_toolbar().
+ */
+function lb_everywhere_toolbar() {
+
+  $saveUrl = Url::fromUri('base:/');
+  $discardUrl = Url::fromUri('base:/');
+  $revertUrl = Url::fromUri('base:/');
+
+  $saveLink = Link::fromTextAndUrl('Save layout', $saveUrl);
+  $saveLink->getUrl()
+    ->setOption('attributes', [
+      'class' => [
+        'toolbar-lb-save',
+      ],
+      'role' => 'button',
+    ]);
+
+  $discardLink = Link::fromTextAndUrl('Discard changes', $discardUrl);
+  $discardLink->getUrl()
+    ->setOption('attributes', [
+      'class' => [
+        'toolbar-lb-discard',
+      ],
+      'role' => 'button',
+    ]);
+
+  $revertLink = Link::fromTextAndUrl('Revert to defaults', $revertUrl);
+  $revertLink->getUrl()
+    ->setOption('attributes', [
+      'class' => [
+        'toolbar-lb-revert',
+      ],
+      'role' => 'button',
+    ]);
+
+    $items['view_mode'] = [
+      '#type' => 'toolbar_item',
+      'tab' => [
+        '#type' => 'link',
+        '#title' => t('View'),
+        '#url' => Url::fromRoute('<front>'),
+        '#attributes' => [
+          'class' => ['toolbar-item-view-mode'],
+        ],
+      ],
+      '#weight' => -100,
+      '#attached' => [
+        'library' => [
+          'lb_everywhere/lb_everywhere',
+        ],
+      ],
+    ];
+
+  $items['lb_mode'] = [
+    '#type' => 'toolbar_item',
+    'tab' => [
+      '#type' => 'link',
+      '#title' => t('Layout'),
+      '#url' => Url::fromRoute('<front>'),
+      '#attributes' => [
+        'class' => ['toolbar-item-lb-mode'],
+      ],
+    ],
+    '#weight' => -100,
+    '#attached' => [
+      'library' => [
+        'lb_everywhere/lb_everywhere',
+      ],
+    ],
+    'tray' => [
+      '#heading' => t('Layout mode actions'),
+      'lb_mode_options' => [
+        '#theme' => 'item_list',
+        '#items' => [
+          'save_link' => $saveLink,
+          'discard_link' => $discardLink,
+          'revert_link' => $revertLink,
+        ],
+        '#attributes' => ['class' => ['toolbar-menu']],
+      ],
+    ],
+  ];
+
+  return $items;
+}

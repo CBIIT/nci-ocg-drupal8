@@ -1,0 +1,12 @@
+services:
+  lb_everywhere.block_repository:
+    decorates: block.repository
+    class: Drupal\lb_everywhere\LBEverywhereBlockRepository
+    arguments: ['@lb_everywhere.block_repository.inner', '@theme.manager', '@config.factory']
+  lb_everywhere.page_display_variant_subscriber:
+    class: Drupal\lb_everywhere\EventSubscriber\LBEverywhereDisplayVariantSubscriber
+    tags:
+      - { name: event_subscriber }
+  lb_everywhere.region_repository:
+    class: Drupal\lb_everywhere\LBEverywhereRegionRepository
+    arguments: ['@entity_display.repository', '@config.factory', '@plugin.manager.layout_builder.section_storage']
