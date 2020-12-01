@@ -16,9 +16,5 @@ function uswds_ocg_preprocess_views_view_table(&$variables) {
     $variables['column2'] = array_search(2, array_column($view->result, 'paragraphs_item_field_data_paragraph__field_column_header__p'));
     $variables['column3'] = array_search(3, array_column($view->result, 'paragraphs_item_field_data_paragraph__field_column_header__p'));
     $variables['column4'] = array_search(4, array_column($view->result, 'paragraphs_item_field_data_paragraph__field_column_header__p'));
-    //dump($column1);
-    
-    //dump(get_defined_vars());
-    //dump($view->result);
   }
 }

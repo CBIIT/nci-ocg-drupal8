@@ -35,7 +35,6 @@
 #}
 {% set pid = rows[0].columns['id'].content[0].field_output|render|striptags|spaceless %}
 {% set nid = rows[0].columns['nid'].content[0].field_output|render|striptags|spaceless %}
-
 {% if column1 matches '/^\\d+$/' %}
   <td class="outer colN" headers="{{ pid }}-rh seq_ch {{ nid }}-bn">
     <table>
@@ -91,7 +90,6 @@
         </tr>
         <tr>
           <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
-            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
           </td>
         </tr>
       </tbody>
@@ -154,7 +152,6 @@
         </tr>
         <tr>
           <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
-            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
           </td>
         </tr>
       </tbody>
@@ -217,7 +214,6 @@
         </tr>
         <tr>
           <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
-            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
           </td>
         </tr>
       </tbody>
@@ -280,7 +276,6 @@
         </tr>
         <tr>
           <td class="cellbody" headers="{{ pid }}_rh seq_ch {{ nid }}_bn {{ pid }}_seq">
-            {{ drupal_view('target_data_matrix', 'sequence_values', pid) }}
           </td>
         </tr>
       </tbody>
