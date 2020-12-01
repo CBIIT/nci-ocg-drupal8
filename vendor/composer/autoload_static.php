@@ -106,6 +106,10 @@ class ComposerStaticInit47b7a78f03900e2b4d526118c39c69a5
         array (
             'zaporylie\\ComposerDrupalOptimizations\\' => 38,
         ),
+        'p' => 
+        array (
+            'phpDocumentor\\Reflection\\' => 25,
+        ),
         'm' => 
         array (
             'mikehaertl\\wkhtmlto\\' => 20,
@@ -293,6 +297,12 @@ class ComposerStaticInit47b7a78f03900e2b4d526118c39c69a5
         'zaporylie\\ComposerDrupalOptimizations\\' => 
         array (
             0 => __DIR__ . '/..' . '/zaporylie/composer-drupal-optimizations/src',
+        ),
+        'phpDocumentor\\Reflection\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'mikehaertl\\wkhtmlto\\' => 
         array (
@@ -529,8 +539,7 @@ class ComposerStaticInit47b7a78f03900e2b4d526118c39c69a5
         ),
         'Pharborist\\' => 
         array (
-            0 => __DIR__ . '/..' . '/grom358/pharborist/src',
-            1 => __DIR__ . '/..' . '/jcnventura/pharborist/src',
+            0 => __DIR__ . '/..' . '/jcnventura/pharborist/src',
         ),
         'MyCLabs\\Enum\\' => 
         array (
@@ -776,13 +785,6 @@ class ComposerStaticInit47b7a78f03900e2b4d526118c39c69a5
     );
 
     public static $prefixesPsr0 = array (
-        'p' => 
-        array (
-            'phpDocumentor' => 
-            array (
-                0 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            ),
-        ),
         'o' => 
         array (
             'org\\bovigo\\vfs\\' => 
