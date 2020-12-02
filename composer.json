@@ -108,10 +108,12 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "echo Delete all .git directories in vendor.", "rm -rf vendor/**/**/.git"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "echo Delete all .git directories in vendor.", "rm -rf vendor/**/**/.git"
         ]
     },
     "extra": {
