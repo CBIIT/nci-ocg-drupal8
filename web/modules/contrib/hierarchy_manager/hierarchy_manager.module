@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * @file
+ * General functions and hook implementations for Hierarchy Manager module.
+ */
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function hierarchy_manager_library_info_alter(array &$libraries, $module) {
+  if ('hierarchy_manager' == $module) {
+    // Use CDN instead of all local missing libraries.
+    // jsTree min js.
+    $cdn_library = _hierarchy_manager_use_cdn($libraries, 'libraries.jquery.jstree', 'js');
+    if ($cdn_library) {
+      $libraries['libraries.jquery.jstree']['js'] = $cdn_library;
+    }
+    // jsTree default theme.
+    $cdn_library = _hierarchy_manager_use_cdn($libraries, 'libraries.jquery.jstree.default', 'css');
+    if ($cdn_library) {
+      $libraries['libraries.jquery.jstree.default']['css']['component'] = $cdn_library;
+    }
+    // jsTree dark theme.
+    $cdn_library = _hierarchy_manager_use_cdn($libraries, 'libraries.jquery.jstree.default-dark', 'css');
+    if ($cdn_library) {
+      $libraries['libraries.jquery.jstree.default-dark']['css']['component'] = $cdn_library;
+    }
+    // jsoneditor min js.
+    $cdn_library = _hierarchy_manager_use_cdn($libraries, 'libraries.jsoneditor', 'js');
+    if ($cdn_library) {
+      $libraries['libraries.jsoneditor']['js'] = $cdn_library;
+    }
+    // jsoneditor default theme.
+    $cdn_library = _hierarchy_manager_use_cdn($libraries, 'libraries.jsoneditor.default-theme', 'css');
+    if ($cdn_library) {
+      $libraries['libraries.jsoneditor.default-theme']['css']['component'] = $cdn_library;
+    }
+  }
+}
+
+/**
+ * Implement hook_entity_type_alter().
+ * 
+ * @param array $entity_types
+ *   Entity type information array.
+ */
+function hierarchy_manager_entity_type_alter(array &$entity_types) {
+  // Override the menu edit form.
+  $entity_types['menu']
+  ->setFormClass('edit', 'Drupal\hierarchy_manager\Form\HmMenuForm');
+}
+
+/**
+ * Replace local library with CDN.
+ *
+ * @param array $libraries
+ *   The libraries array.
+ * @param string $library_name
+ *   The library name.
+ * @param string $type
+ *   The library type.
+ * @param bool $replace_local
+ *   Force to replace local libraries with CDN.
+ *
+ * @return array
+ *   The new library array (CDN)
+ */
+function _hierarchy_manager_use_cdn(array $libraries, $library_name, $type, $replace_local = FALSE) {
+  if (isset($libraries[$library_name])) {
+    if (isset($libraries[$library_name][$type]) && isset($libraries[$library_name]['cdn'])) {
+      $library_array = [];
+      $updated = FALSE;
+      // CSS library has a sub-array called component.
+      if ($type === 'css') {
+        if (isset($libraries[$library_name][$type]['component'])) {
+          $local_library = $libraries[$library_name][$type]['component'];
+        }
+        else {
+          return FALSE;
+        }
+      }
+      else {
+        // Local js library.
+        $local_library = $libraries[$library_name][$type];
+      }
+      foreach ($local_library as $key => $value) {
+        if (!file_exists(DRUPAL_ROOT . $key) || $replace_local) {
+          // The js file doesn't exist.
+          // Replace it with remote cdn.
+          $library_array[$libraries[$library_name]['cdn'] . basename($key)] = $value;
+          $updated = TRUE;
+        }
+        else {
+          $library_array[$key] = $value;
+        }
+      }
+    }
+  }
+
+  return empty($updated) ? FALSE : $library_array;
+}

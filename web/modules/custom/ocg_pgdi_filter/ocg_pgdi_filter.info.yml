@@ -1,0 +1,6 @@
+name: 'OCG PGDI Filter'
+description: 'Filter PGDI form fields'
+core: 8.x
+package: OCG
+type: module
+dependencies: {  }

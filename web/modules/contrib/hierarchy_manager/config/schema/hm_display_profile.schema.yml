@@ -1,0 +1,18 @@
+hierarchy_manager.hm_display_profile.*:
+  type: config_entity
+  label: 'HM Display Profile Entity config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    plugin:
+      type: string
+      label: 'Display plugin'
+    config:
+      type: text
+      label: 'Configuration'

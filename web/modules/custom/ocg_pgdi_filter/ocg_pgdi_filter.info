@@ -1,0 +1,5 @@
+name = OCG PGDI Filter
+description = Filter PGDI form fields
+core = 7.x
+package = OCG
+scripts[] = ocg_pgdi_filter.js

@@ -1,0 +1,135 @@
+<?php
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Ajax\HtmlCommand;
+
+/**
+ * Implements hook_form_FORMID_alter
+ */
+function ocg_pgdi_filter_form_node_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  
+  if ($form_id == 'node_pgdi_form' | $form_id == 'node_pgdi_edit_form'){
+    $selected_diagnosis = array();
+    $form['field_cancer_information']['#tree'] = TRUE;
+
+    foreach ($form['field_cancer_information']['widget'] as $key => $cancer_information) {
+      if (is_int($key)) {
+        $cancer_type_options = array();
+        $cancer_type_options['_none'] = '- None -';
+        $cancer_diagnosis_options = array();
+        $cancer_diagnosis_options['_none'] = '- None -';
+        $icd10_options = array();
+        $icd10_options['_none'] = '- None -';
+        $cancer_type_value = $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_type_icd10']['widget']['#default_value'];
+        if (!empty($cancer_type_value)) {
+          $children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadChildren($cancer_type_value[0]);
+          $parents = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->loadTree('icd_10_code', 0, 1);
+          foreach ($parents as $icd10) {
+            $cancer_type_options[$icd10->tid] = $icd10->name;
+          }
+          foreach($children as $child_key => $child){
+            $cancer_diagnosis_options[$child_key] = $child->label();
+            $icd10_options[$child_key] = $child->field_icd_10_term->get(0)->value;
+          }
+        } else {
+          $parents = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->loadTree('icd_10_code', 0, 1);
+          $first_parent = reset($parents);
+          $children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadChildren($first_parent->tid);
+          foreach ($parents as $icd10) {
+            $cancer_type_options[$icd10->tid] = $icd10->name;
+            foreach($children as $child_key => $child){
+              $cancer_diagnosis_options[$child_key] = $child->label();
+              $icd10_options[$child_key] = $child->field_icd_10_term->get(0)->value;
+            }
+          }
+        }
+        $selected_diagnosis[$key] = isset($form_state->getValue('field_cancer_information')[$key]['subform']['field_cancer_diagnosis_icd10'][0]['target_id']) ? $form_state->getValue('field_cancer_information')[$key]['subform']['field_cancer_diagnosis_icd10'][0]['target_id'] : $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_diagnosis_icd10']['widget']['#default_value'];
+        
+        $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_type_icd10']['widget']['#options'] = $cancer_type_options;
+        $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_type_icd10']['widget']['#ajax'] = array(
+          'event' => 'change',
+          'callback' => 'callbacks_wrapper',
+          'wrapper' => 'cancer-diagnosis-replace-'.$key,
+          'method' => 'replace',
+        );
+        $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_diagnosis_icd10']['widget']['#prefix'] = '<div id="cancer-diagnosis-replace-'.$key.'">';
+        $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_diagnosis_icd10']['widget']['#suffix'] = '</div>';
+        $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_diagnosis_icd10']['widget']['#options'] = $cancer_diagnosis_options;
+        $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_diagnosis_icd10']['widget']['#default_value'] = $selected_diagnosis[$key];
+        $form['field_cancer_information']['widget'][$key]['subform']['field_cancer_diagnosis_icd10']['widget']['#ajax'] = array(
+          'event' => 'change',
+          'callback' => 'icd10_dropdown_callback',
+          'wrapper' => 'icd10-replace-'.$key,
+          'method' => 'replace',
+        );
+        $form['field_cancer_information']['widget'][$key]['subform']['field_icd_10']['widget']['#prefix'] = '<div id="icd10-replace-'.$key.'">';
+        $form['field_cancer_information']['widget'][$key]['subform']['field_icd_10']['widget']['#suffix'] = '</div>';
+        $form['field_cancer_information']['widget'][$key]['subform']['field_icd_10']['#validated'] = TRUE;
+        $form['field_cancer_information']['widget'][$key]['subform']['field_icd_10']['widget']['#disabled'] = TRUE;
+        $form['field_cancer_information']['widget'][$key]['subform']['field_icd_10']['widget']['#options'] = $icd10_options;
+        $form['field_cancer_information']['widget'][$key]['subform']['field_icd_10']['widget']['#default_value'] = $selected_diagnosis[$key];
+      } 
+    }
+  }
+}
+
+/**
+ * Filters the dropdown and returns it to the form.
+ *
+ *
+ * @return array
+ *   Renderable array (the second and third dropdown)
+ */
+function callbacks_wrapper(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+ 
+  $parent = intval(strval(0));
+  $triggeringElement = $form_state->getTriggeringElement();
+  $parent = intval(strval($triggeringElement['#value']));
+  $key = $triggeringElement['#field_parents'][1];
+
+  if ($parent == '_none') {
+    $parents = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->loadTree('icd_10_code', 0, 1);
+    $first_parent = reset($parents);
+    $parent = $first_parent->tid;
+  }
+  
+  $children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadChildren($parent);
+  $options = '';
+  $icd10_options = '';
+
+  if (!empty($children)) {
+    foreach($children as $child_key => $child){
+      $options.= "<option value='".$child_key."'>".$child->name->value."</option>";
+      $icd10_options.= "<option value='".$child_key."'>".$child->get('field_icd_10_term')->value."</option>";
+    }
+  } else {
+    $parents = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->loadTree('icd_10_code', 0, 1);
+    foreach ($parents as $icd10) {
+      $cancer_type_options[$icd10->tid] = $icd10->name;
+      $children = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->loadTree('icd_10_code', $icd10->tid, 1, $load_entities = TRUE);
+      foreach($children as $child_key => $child){
+        $options.= "<option value='".$child_key."'>".$child->name->value."</option>";
+        $icd10_options.= "<option value='".$child->key."'>".$child->get('field_icd_10_term')->value."</option>";
+      }
+    }
+  }
+  
+  $response = new AjaxResponse();
+  $response->addCommand(new HtmlCommand("#edit-field-cancer-information-".$key."-subform-field-cancer-diagnosis-icd10", $options));
+  $response->addCommand(new HtmlCommand("#edit-field-cancer-information-".$key."-subform-field-icd-10", $icd10_options));
+  return $response;
+}
+
+function icd10_dropdown_callback(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $triggeringElement = $form_state->getTriggeringElement();
+  $key = $triggeringElement['#field_parents'][1];
+  $tid = $triggeringElement['#value'];
+  $term = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($tid);
+  $icd_10 = $term->get('field_icd_10_term')->value;
+  $icd10_options.= "<option value='".$key."'>".$icd_10."</option>";
+  
+  $response = new AjaxResponse();
+  $response->addCommand(new HtmlCommand("#edit-field-cancer-information-".$key."-subform-field-icd-10", $icd10_options));
+  return $response;
+}

@@ -1,0 +1,227 @@
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'dmu_report' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Report.html.twig' -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drupal Module Upgrader analysis report</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,600' rel='stylesheet' type='text/css' />
+    <style type="text/css">
+    <!--
+
+body {
+  width: 80%;
+  color: #343434;
+  margin: 1em auto;
+  font-family: 'Open Sans', Verdana, sans-serif;
+}
+
+details {
+  font-size: 18px;
+  line-height: 25px;
+  margin-bottom: 2em;
+  display: list-item;
+  list-style: none;
+}
+
+details summary {
+  padding: 1em;
+  margin-bottom: 1em;
+  display: list-item;
+  cursor: pointer;
+}
+
+details.error summary {
+  background-color: #ffd5d5;
+}
+
+details.warning summary {
+  background-color: #fff3bb;
+}
+
+a {
+  color: #095cb1;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+aside {
+  font-style: italic;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+.group {
+  border: 1px solid #ececec;
+  padding: 1em;
+  display: block;
+}
+
+.group > summary {
+  padding: 0;
+  color: #c8c8c8;
+  margin-bottom: 0;;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  display: list-item;
+}
+
+.group[open] > summary {
+  margin-bottom: 1em;
+}
+
+.group > details:last-child {
+  margin-bottom: 0;
+}
+
+    -->
+    </style>
+  </head>
+  <body>
+    <h1>Drupal Module Upgrader analysis report</h1>
+      <details open="true" class="group">
+      <summary></summary>
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'dmu_issue' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+    <details class="error">
+      <summary><code>drupal_render()</code> has been removed.</summary>
+
+      
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 110</li>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 111</li>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 131</li>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 132</li>
+            </ul>
+                  <aside>Flagged by _function_call:drupal_render</aside>    </details>
+
+<!-- END OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'dmu_issue' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+    <details class="error">
+      <summary><code>taxonomy_term_load()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2266845">Entities are now classed objects implementing <code>EntityInterface</code></a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 126</li>
+            </ul>
+                  <aside>Flagged by _function_call:taxonomy_term_load</aside>    </details>
+
+<!-- END OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'dmu_issue' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+    <details class="error">
+      <summary><code>taxonomy_get_tree()</code> is now a method of the taxonomy term storage controller.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2328205">Certain Taxonomy API functions have moved into <code>TermStorage</code> class</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 20</li>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 29</li>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 81</li>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.module, line 96</li>
+            </ul>
+                  <aside>Flagged by _function_call:taxonomy_get_tree</aside>    </details>
+
+<!-- END OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'dmu_issue' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+    <details class="error">
+      <summary>Module info files' <code>core</code> key must have a value of <code>8.x</code>.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/1935708"><code>.info</code> files are now <code>.info.yml</code> files</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.info</li>
+            </ul>
+                  <aside>Flagged by info</aside>    </details>
+
+<!-- END OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'dmu_issue' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+    <details class="error">
+      <summary>Info files must contain a <code>type</code> key.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/1935708#type"><code>.info</code> files are now <code>.info.yml</code> files</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>/home/ian-moran/drupal/ocg-8/web/modules/custom/ocg_pgdi_filter/ocg_pgdi_filter.info</li>
+            </ul>
+                  <aside>Flagged by info</aside>    </details>
+
+<!-- END OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'dmu_issue' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+    <details class="warning">
+      <summary>Many common functions, shared variables, and constants have been renamed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2324935">The global theme variables have been replaced by an ActiveTheme object</a></li>
+              </ul>
+      
+                      </details>
+
+<!-- END OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Issue.html.twig' -->
+
+
+    </details>
+    </body>
+</html>
+
+<!-- END OUTPUT from 'modules/contrib/drupalmoduleupgrader/templates/Report.html.twig' -->
+
