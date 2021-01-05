@@ -39,5 +39,14 @@ $(document).ready (function (){
       e.preventDefault();
     }
   });
+  
+  $("a.open-accordion").click(function(e) {
+    var hash = $(this).attr('data-page');
+    var url = hash.slice(1);
+    if(url){ 
+      $(document.getElementById(url)).click();
+    }
+  });
+  
 });
 })(jQuery, Drupal, this, this.document);

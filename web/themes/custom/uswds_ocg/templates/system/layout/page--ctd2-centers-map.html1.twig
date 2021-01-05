@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * USWDS theme implementation to display a single page.
+ */
+#}
+
+
+ <main class="usa-section" id="main-content">
+   <div class="{{ main_class }}">
+
+     <div class="grid-row grid-gap">
+
+
+       <div class="region-content {{ content_class }}">
+         {{ page.content|without('uswds_ocg_pagetitle') }}
+       </div>
+
+      
+    </div>
+   </div>
+
+   </main>
