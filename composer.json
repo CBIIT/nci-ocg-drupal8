@@ -146,9 +146,6 @@
             "drupal/views_fields_on_off" : {
               "Views fields on and off patch for BEF functionality" : "https://www.drupal.org/files/issues/2020-07-17/13751742_0.patch",
               "Views fields on and off patch for default columns": "https://www.drupal.org/files/issues/2020-09-08/3032517_views_fields_on_off_filter_on_load_and_follow_field_config_for_default_exludes-12.patch"
-            },
-            "drupal/linkchecker" : {
-              "Add support for Redirect module" : "https://www.drupal.org/files/issues/2020-06-17/3058014-27.patch"
             }
         }
     }
