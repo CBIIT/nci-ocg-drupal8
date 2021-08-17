@@ -18,10 +18,10 @@ class InitSubscriber implements EventSubscriberInterface {
   }
 
   public function onEvent() {
-    $plugin = context_get_plugin('conditions', 'status');
-    if ($plugin) {
-      $plugin->execute();
-    }
+    //$plugin = context_get_plugin('conditions', 'status');
+    //if ($plugin) {
+      //$plugin->execute();
+    //}
   }
 
 }

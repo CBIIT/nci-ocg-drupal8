@@ -51,7 +51,7 @@ class Ctd2JsonController extends ControllerBase {
         );
         $row_key = 0;
         foreach ($node->get('field_row') as $row) {
-          $p = \Drupal::entityManager()->getStorage('paragraph')->load($row->target_id);
+          $p = \Drupal::entityTypeManager()->getStorage('paragraph')->load($row->target_id);
           if ($p->get('field_internal')->value == 0) {
             //dump($p);
             if($p->get('field_row_number')->value){
@@ -75,14 +75,14 @@ class Ctd2JsonController extends ControllerBase {
               );
             }
             foreach ($p->get('field_assay_type') as $field_assay_type_key => $field_assay_type) {
-              $t = \Drupal::entityManager()->getStorage('taxonomy_term')->load($field_assay_type->target_id);
+              $t = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($field_assay_type->target_id);
               //dump($t);
               $json_array['nodes'][$key]['node']['row'][$row_key]['assay_type'][] = array(
                   'name' => $t->get('name')->value,
               );
             }
             foreach ($p->get('field_paper') as $papers_key => $papers) {
-              $paper = \Drupal::entityManager()->getStorage('paragraph')->load($papers->target_id);
+              $paper = \Drupal::entityTypeManager()->getStorage('paragraph')->load($papers->target_id);
               $pos = strpos($paper->get('field_paper_link')->uri, 'internal:');
               if($pos !== false) {
                 $paper->get('field_paper_link')->uri = str_replace('internal:/', '', $paper->get('field_paper_link')->uri);
@@ -93,7 +93,7 @@ class Ctd2JsonController extends ControllerBase {
               );
             }
             foreach ($p->get('field_experimental_approaches') as $approaches_key => $approaches) {
-              $approach = \Drupal::entityManager()->getStorage('paragraph')->load($approaches->target_id);
+              $approach = \Drupal::entityTypeManager()->getStorage('paragraph')->load($approaches->target_id);
               $pos = strpos($approach->get('field_text')->uri, 'internal:');
               if($pos !== false) {
                 $approach->get('field_text')->uri = str_replace('internal:/', '', $approach->get('field_text')->uri);
@@ -108,13 +108,13 @@ class Ctd2JsonController extends ControllerBase {
               );
             }
             foreach ($p->get('field_ctd2_data_project_page') as $dpp_key => $dpp_list) {
-              $dpp = \Drupal::entityManager()->getStorage('node')->load($dpp_list->target_id);
+              $dpp = \Drupal::entityTypeManager()->getStorage('node')->load($dpp_list->target_id);
               $json_array['nodes'][$key]['node']['row'][$row_key]['dpp'] = array(
                   'title' => $dpp->get('title')->value,
                   'body' => $dpp->get('body')->value,
                 );
               foreach ($dpp->get('field_dpp_approaches') as $dpp_approaches){
-                $dpp_approach = \Drupal::entityManager()->getStorage('paragraph')->load($dpp_approaches->target_id);
+                $dpp_approach = \Drupal::entityTypeManager()->getStorage('paragraph')->load($dpp_approaches->target_id);
                 $json_array['nodes'][$key]['node']['row'][$row_key]['dpp'][] = array(
                   'dpp_title' => $dpp_approach->get('field_dpp_title')->value,
                   'dpp_body' => $dpp_approach->get('field_dpp_body')->value,
@@ -122,7 +122,7 @@ class Ctd2JsonController extends ControllerBase {
               }
             }
             foreach ($p->get('field_data') as $data_key => $data_list) {
-              $data = \Drupal::entityManager()->getStorage('paragraph')->load($data_list->target_id);
+              $data = \Drupal::entityTypeManager()->getStorage('paragraph')->load($data_list->target_id);
               $pos = strpos($data->get('field_data_link')->uri, 'internal:');
               if($pos !== false) {
                 $data->get('field_data_link')->uri = str_replace('internal:/', '', $data->get('field_data_link')->uri);
@@ -136,13 +136,13 @@ class Ctd2JsonController extends ControllerBase {
               );
             }
             foreach ($p->get('field_principal_investigator') as $investigators_key => $investigators) {
-              $investigator = \Drupal::entityManager()->getStorage('paragraph')->load($investigators->target_id);
+              $investigator = \Drupal::entityTypeManager()->getStorage('paragraph')->load($investigators->target_id);
               $json_array['nodes'][$key]['node']['row'][$row_key]['investigator'][] = array(
                 'investigator' => $investigator->get('field_pi_link')->value,                   
               );
             }
             foreach ($p->get('field_ctd2_contact_name') as $contacts_key => $contacts) {
-              $contact = \Drupal::entityManager()->getStorage('paragraph')->load($contacts->target_id);
+              $contact = \Drupal::entityTypeManager()->getStorage('paragraph')->load($contacts->target_id);
               $pos = strpos($contact->get('field_contact_link')->uri, 'internal:');
               if($pos !== false) {
                 $contact->get('field_contact_link')->uri = str_replace('internal:/', '', $contact->get('field_contact_link')->uri);
