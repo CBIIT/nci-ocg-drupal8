@@ -138,11 +138,7 @@
         },
         "patches": {
             "drupal/views_selective_filters": {
-                "Drupal Views Selective Filters fix missing column issue": "https://www.drupal.org/files/issues/2020-07-13/views_selective_filters-sql_error-2804485-9-8.patch",
-                "Drupal 9 compatibility fix" : "https://www.drupal.org/files/issues/2021-06-16/d9-compatibility-fixes-3170132-6.patch"
-            },
-            "drupal/draggableviews" : {
-              "Draggableviews patch to add attached view selection": "https://www.drupal.org/files/issues/2020-04-24/draggableviews-sort_handler_specify_order_view-2767437-70.patch"
+                "Drupal Views Selective Filters fix missing column issue": "https://www.drupal.org/files/issues/2020-07-13/views_selective_filters-sql_error-2804485-9-8.patch"
             },
             "drupal/views_fields_on_off" : {
               "Views fields on and off patch for BEF functionality" : "https://www.drupal.org/files/issues/2020-07-17/13751742_0.patch",
