@@ -31,7 +31,7 @@
         "drupal/colorbox_inline": "^1.2",
         "drupal/conditional_fields": "^4.0@alpha",
         "drupal/convert_media_tags_to_markup": "^2.0",
-        "drupal/core": "9.2.10 as 8.9.18",
+        "drupal/core": "9.3.9 as 8.9.18",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-project-message": "^9",
         "drupal/core-recommended": "^9",
