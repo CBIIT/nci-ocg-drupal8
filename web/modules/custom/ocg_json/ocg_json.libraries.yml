@@ -1,7 +1,7 @@
 angularjs:
-  version: 1.34
+  version: 1.8.3
   js:
-    /libraries/angularjs/angular.min.js: {}
+    https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js: {type: external}
     
 ocg_json:
   version: 1.0
