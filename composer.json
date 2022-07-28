@@ -40,7 +40,7 @@
         "drupal/devel": "^4.0",
         "drupal/draggableviews": "1.x-dev",
         "drupal/drupalmoduleupgrader": "1.x-dev",
-        "drupal/dynamic_entity_reference": "^2.0-alpha14",
+        "drupal/dynamic_entity_reference": "^1.14",
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/entity_embed": "^1.2",
         "drupal/entity_print": "2.x",
